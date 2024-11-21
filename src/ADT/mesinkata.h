@@ -60,7 +60,7 @@ void GetWord(Word input, int idx);
 Word toKata(char *str);
 /* Mengubah string menjadi tipe Word */
 
-boolean IsWordEqual(Word kata, char *string);
+boolean IsWordString(Word kata, char *string);
 /* Mengecek apakah sebuah Word sama dengan string */
 
 boolean IsWordNumber(Word kata);

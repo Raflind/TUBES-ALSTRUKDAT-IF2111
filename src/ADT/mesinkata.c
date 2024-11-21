@@ -124,7 +124,7 @@ Word toKata(char *str) {
 }
 /* Mengubah string menjadi tipe Word */
 
-boolean IsWordEqual(Word kata, char *string) {
+boolean IsWordString(Word kata, char *string) {
     int i = 0;
     while (i < kata.Length && string[i] != '\0') {
         if (kata.TabWord[i] != string[i]) {
@@ -135,6 +135,20 @@ boolean IsWordEqual(Word kata, char *string) {
     return (i == kata.Length && string[i] == '\0');
 }
 /* Mengecek apakah sebuah Word sama dengan string */
+
+boolean IsWordEqual(Word kata1, Word kata2) {
+    if (kata1.Length != kata2.Length) {
+        return false;
+    }
+    for (int i = 0; i < kata1.Length; i++) {
+        if (kata1.TabWord[i] != kata2.TabWord[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+/* Mengecek apakah dua buah word sama */
+
 
 boolean IsWordNumber(Word kata) {
     int i = 0;
