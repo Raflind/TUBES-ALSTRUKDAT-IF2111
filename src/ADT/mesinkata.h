@@ -63,6 +63,9 @@ Word toKata(char *str);
 boolean IsWordString(Word kata, char *string);
 /* Mengecek apakah sebuah Word sama dengan string */
 
+boolean IsWordEqual(Word kata1, Word kata2);
+/* Mengecek apakah dua buah word sama */
+
 boolean IsWordNumber(Word kata);
 /* Mengecek apakah Word merupakan angka */
 
