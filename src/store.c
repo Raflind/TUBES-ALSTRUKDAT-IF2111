@@ -4,6 +4,7 @@
 #include "mesinkata.h"
 #include "mesinkarakter.h"
 
+
 void display_store_list(ListBarang store_list) {
     DisplayListBarang(store_list);
 }
