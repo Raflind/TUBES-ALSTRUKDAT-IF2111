@@ -1,9 +1,5 @@
-/* File: mesinkarakter.h */
-/* Definisi Mesin Karakter */
-
 #include <stdio.h>
 #include "mesinkarakter.h"
-
 
 char currentChar;
 boolean EOP;
@@ -43,7 +39,6 @@ void START_STDIN() {
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
-
 void ADV() {
     retval = fscanf(pita, "%c", &currentChar);
     if (retval > 0) {
@@ -53,7 +48,7 @@ void ADV() {
     }
 
     if (EOP && pita != stdin) {
-        fclose(pita); 
+        fclose(pita);
     }
 }
 /* Pita dimajukan satu karakter.
@@ -71,3 +66,23 @@ boolean IsEOP() {
     return EOP;
 }
 /* Mengirimkan true jika currentChar = MARK */
+
+/* Implementasi Fungsi Utility */
+
+int string_compare(char *s1, char *s2) {
+    int i = 0;
+    while (s1[i] != '\0' || s2[i] != '\0') {
+        if (s1[i] != s2[i])
+            return s1[i] - s2[i];
+        if (s1[i] == '\0' || s2[i] == '\0')
+            break;
+        i++;
+    }
+    return 0;
+}
+
+void string_copy(char *dest, char *src) {
+    int i = 0;
+    while ((dest[i] = src[i]) != '\0')
+        i++;
+}

@@ -17,15 +17,15 @@ int main() {
     // Menambahkan beberapa barang awal ke store_list 
     Barang item1, item2, item3;
 
-    string_copy(item1.name, "Platypus Laser");
+    string_copy(item1.name, "Baby Oil");
     item1.price = 5000;
     AddBarang(&store_list, item1);
 
-    string_copy(item2.name, "Shrink Ray");
+    string_copy(item2.name, "Jean Paul Gaultier");
     item2.price = 3000;
     AddBarang(&store_list, item2);
 
-    string_copy(item3.name, "Net Shooter");
+    string_copy(item3.name, "BIG PP");
     item3.price = 2000;
     AddBarang(&store_list, item3);
 
