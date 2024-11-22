@@ -12,18 +12,15 @@ void display_store_list(ListBarang store_list) {
 void store_request(ListBarang store_list, Queue *requests) {
     printf("Nama barang yang diminta: ");
 
-    STARTLINE();
+    ReadLine();
 
-    if (currentWord.Length == 0) {
+    if (currentWord.length == 0) {
         printf("Nama barang tidak boleh kosong!\n");
         return;
     }
 
     char item_name[MAX_LEN];
-    for (int i = 0; i < currentWord.Length && i < MAX_LEN - 1; i++) {
-        item_name[i] = currentWord.TabWord[i];
-    }
-    item_name[currentWord.Length] = '\0';
+    CopyWordToString(item_name);
 
     if (FindBarangByName(store_list, item_name) != -1) {
         printf("Barang dengan nama yang sama sudah ada di toko!\n");
@@ -54,25 +51,29 @@ void store_supply(ListBarang *store_list, Queue *requests) {
 
     printf("Apakah kamu ingin menambahkan barang %s (Terima/Tunda/Tolak): ", item.name);
 
-    STARTLINE();
+    StartWord();
 
-    if (currentWord.Length == 0) {
+    if (currentWord.length == 0) {
         printf("Input tidak valid.\n");
         enqueue(requests, item);
         return;
     }
 
     char response[MAX_LEN];
-    for (int i = 0; i < currentWord.Length && i < MAX_LEN - 1; i++) {
-        response[i] = currentWord.TabWord[i];
+    CopyWordToString(response);
+
+    while (!IsEOP() && currentChar != '\n') {
+        ADV();
     }
-    response[currentWord.Length] = '\0';
+    if (currentChar == '\n') {
+        ADV();
+    }
 
     if (string_compare(response, "Terima") == 0) {
         printf("Harga barang: ");
-        STARTLINE();
+        StartWord();
 
-        if (currentWord.Length == 0 || !IsWordNumber(currentWord)) {
+        if (currentWord.length == 0 || !IsWordNumber(currentWord)) {
             printf("Harga barang tidak valid.\n");
             enqueue(requests, item);
             return;
@@ -103,18 +104,15 @@ void store_supply(ListBarang *store_list, Queue *requests) {
 void store_remove(ListBarang *store_list) {
     printf("Nama barang yang akan dihapus: ");
 
-    STARTLINE();
+    ReadLine();
 
-    if (currentWord.Length == 0) {
+    if (currentWord.length == 0) {
         printf("Nama barang tidak boleh kosong!\n");
         return;
     }
 
     char item_name[MAX_LEN];
-    for (int i = 0; i < currentWord.Length && i < MAX_LEN - 1; i++) {
-        item_name[i] = currentWord.TabWord[i];
-    }
-    item_name[currentWord.Length] = '\0';
+    CopyWordToString(item_name);
 
     int index = FindBarangByName(*store_list, item_name);
 
@@ -131,33 +129,25 @@ void store_menu(ListBarang *store_list, Queue *requests) {
     while (running) {
         printf("\nMasukkan command (STORE LIST, STORE REQUEST, STORE SUPPLY, STORE REMOVE, QUIT): ");
 
-        STARTLINE();
-        ParseLineToWords();
+        StartWord();
 
-        if (wordCount == 0) {
+        if (currentWord.length == 0) {
             printf("Command tidak dikenal.\n");
             continue;
         }
 
-        Word commandWord = wordArray[0];
         char command[MAX_LEN];
-        for (int i = 0; i < commandWord.Length && i < MAX_LEN - 1; i++) {
-            command[i] = commandWord.TabWord[i];
-        }
-        command[commandWord.Length] = '\0';
+        CopyWordToString(command);
 
-        if (string_compare(command, "STORE") == 0) {
-            if (wordCount < 2) {
+        if (IsWordEqual(currentWord, "STORE")) {
+            AdvanceWord();
+            if (currentWord.length == 0) {
                 printf("Subcommand STORE tidak lengkap.\n");
                 continue;
             }
 
-            Word subcommandWord = wordArray[1];
             char subcommand[MAX_LEN];
-            for (int i = 0; i < subcommandWord.Length && i < MAX_LEN - 1; i++) {
-                subcommand[i] = subcommandWord.TabWord[i];
-            }
-            subcommand[subcommandWord.Length] = '\0';
+            CopyWordToString(subcommand);
 
             if (string_compare(subcommand, "LIST") == 0) {
                 display_store_list(*store_list);
@@ -170,11 +160,18 @@ void store_menu(ListBarang *store_list, Queue *requests) {
             } else {
                 printf("Subcommand STORE tidak dikenal.\n");
             }
-        } else if (string_compare(command, "QUIT") == 0) {
+        } else if (IsWordEqual(currentWord, "QUIT")) {
             running = 0;
             printf("Program dihentikan.\n");
         } else {
             printf("Command tidak dikenal.\n");
+        }
+
+        while (!IsEOP() && currentChar != '\n') {
+            ADV();
+        }
+        if (currentChar == '\n') {
+            ADV();
         }
     }
 }
