@@ -1,6 +1,3 @@
-/* File: mesinkarakter.c */
-/* Implementasi Mesin Karakter */
-
 #include <stdio.h>
 #include "mesinkarakter.h"
 
