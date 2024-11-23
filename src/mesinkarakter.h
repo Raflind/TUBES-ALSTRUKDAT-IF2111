@@ -1,11 +1,13 @@
 #ifndef __MESIN_KAR_H_
 #define __MESIN_KAR_H_
 
+#include <stdio.h>
 #include "boolean.h"
 
 #define MARK '.'
 
 /* State Mesin */
+extern FILE *pita;
 extern char currentChar;
 extern boolean EOP;
 
@@ -27,5 +29,8 @@ char GetCC();
 
 boolean IsEOP();
 /* Mengirimkan true jika currentChar = MARK */
+
+void StartFile(char *filename);
+void CloseFile();
 
 #endif
