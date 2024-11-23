@@ -12,7 +12,7 @@ void display_store_list(ListBarang store_list) {
 void store_request(ListBarang store_list, Queue *requests) {
     printf("Nama barang yang diminta: ");
 
-    ReadLine();
+    StartWord();
 
     if (currentWord.length == 0) {
         printf("Nama barang tidak boleh kosong!\n");
@@ -62,13 +62,6 @@ void store_supply(ListBarang *store_list, Queue *requests) {
     char response[MAX_LEN];
     CopyWordToString(response);
 
-    while (!IsEOP() && currentChar != '\n') {
-        ADV();
-    }
-    if (currentChar == '\n') {
-        ADV();
-    }
-
     if (string_compare(response, "Terima") == 0) {
         printf("Harga barang: ");
         StartWord();
@@ -104,7 +97,7 @@ void store_supply(ListBarang *store_list, Queue *requests) {
 void store_remove(ListBarang *store_list) {
     printf("Nama barang yang akan dihapus: ");
 
-    ReadLine();
+    StartWord();
 
     if (currentWord.length == 0) {
         printf("Nama barang tidak boleh kosong!\n");
@@ -125,9 +118,11 @@ void store_remove(ListBarang *store_list) {
 }
 
 void store_menu(ListBarang *store_list, Queue *requests) {
+    printf("\nMasukkan command (LIST, REQUEST, SUPPLY, REMOVE, QUIT): ");
     int running = 1;
+    START();
     while (running) {
-        printf("\nMasukkan command (STORE LIST, STORE REQUEST, STORE SUPPLY, STORE REMOVE, QUIT): ");
+        printf("\nMasukkan command (LIST, REQUEST, SUPPLY, REMOVE, QUIT): ");
 
         StartWord();
 
@@ -139,39 +134,28 @@ void store_menu(ListBarang *store_list, Queue *requests) {
         char command[MAX_LEN];
         CopyWordToString(command);
 
-        if (IsWordEqual(currentWord, "STORE")) {
-            AdvanceWord();
-            if (currentWord.length == 0) {
-                printf("Subcommand STORE tidak lengkap.\n");
-                continue;
-            }
+        if (currentWord.length == 0) {
+            printf("Subcommand STORE tidak lengkap.\n");
+            continue;
+        }
 
-            char subcommand[MAX_LEN];
-            CopyWordToString(subcommand);
-
-            if (string_compare(subcommand, "LIST") == 0) {
-                display_store_list(*store_list);
-            } else if (string_compare(subcommand, "REQUEST") == 0) {
-                store_request(*store_list, requests);
-            } else if (string_compare(subcommand, "SUPPLY") == 0) {
-                store_supply(store_list, requests);
-            } else if (string_compare(subcommand, "REMOVE") == 0) {
-                store_remove(store_list);
-            } else {
-                printf("Subcommand STORE tidak dikenal.\n");
-            }
-        } else if (IsWordEqual(currentWord, "QUIT")) {
+        if (string_compare(command, "LIST") == 0) {
+            display_store_list(*store_list);
+        } else if (string_compare(command, "REQUEST") == 0) {
+            store_request(*store_list, requests);
+        } else if (string_compare(command, "SUPPLY") == 0) {
+            store_supply(store_list, requests);
+        } else if (string_compare(command, "REMOVE") == 0) {
+            store_remove(store_list);
+        } 
+        else if (IsWordEqual(currentWord, "QUIT")) {
             running = 0;
             printf("Program dihentikan.\n");
-        } else {
+        } 
+        else {
             printf("Command tidak dikenal.\n");
         }
 
-        while (!IsEOP() && currentChar != '\n') {
-            ADV();
-        }
-        if (currentChar == '\n') {
-            ADV();
-        }
+        
     }
 }
