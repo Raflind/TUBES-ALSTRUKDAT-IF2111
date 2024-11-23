@@ -1,4 +1,5 @@
 #include "mesinkata.h"
+#include "boolean.h"
 
 Word currentWord;
 
@@ -37,11 +38,11 @@ void CopyWord() {
     currentWord.length = i;
 }
 
-int IsWordEqual(Word word, char *string) {
+boolean IsWordEqual(Word word, char *string) {
     int i = 0;
     while (i < word.length && string[i] != '\0') {
         if (word.contents[i] != string[i]) {
-            return 0;
+            return false;
         }
         i++;
     }
@@ -71,18 +72,18 @@ void ReadLine() {
     }
 }
 
-int IsWordNumber(Word word) {
+boolean IsWordNumber(Word word) {
     int i = 0;
     if (word.length == 0) {
-        return 0;
+        return false;
     }
     while (i < word.length) {
         if (word.contents[i] < '0' || word.contents[i] > '9') {
-            return 0;
+            return false;
         }
         i++;
     }
-    return 1;
+    return true;
 }
 
 int WordToInt(Word word) {
