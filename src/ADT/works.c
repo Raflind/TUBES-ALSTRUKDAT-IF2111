@@ -140,7 +140,7 @@ void UserWorks(WorksList *W, User *user){
 
 }
 
-/* int main(){
+int main(){
     Works work;
     WorksList worklist;
     CreateEmptyWorkList(&worklist);
@@ -148,6 +148,6 @@ void UserWorks(WorksList *W, User *user){
     RegisterWork(&worklist);
     DisplayWorks(worklist);
     return 0;
-} */
+}
 
 

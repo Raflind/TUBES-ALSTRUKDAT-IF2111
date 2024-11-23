@@ -28,7 +28,7 @@ void AdvanceWord() {
 
 void CopyWord() {
     int i = 0;
-    while (!IsEOP() && currentChar != ' ' && currentChar != '\t' && currentChar != '\n' && i < MAX_WORD_LENGTH - 1) {
+    while (!IsEOP() && currentChar != '\t' && currentChar != '\n' && i < MAX_WORD_LENGTH - 1) {
         currentWord.contents[i] = currentChar;
         ADV();
         i++;

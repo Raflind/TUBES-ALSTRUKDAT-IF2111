@@ -2,6 +2,7 @@
 #define MESINKATA_H
 
 #include "mesinkarakter.h"
+#include "boolean.h"
 
 #define MAX_WORD_LENGTH 256
 
@@ -36,7 +37,7 @@ void CopyWord();
           currentChar = BLANK, TAB, NEWLINE, MARK, atau EOF
           Jika panjang kata melebihi MAX_WORD_LENGTH, sisa kata "dipotong" */
 
-int IsWordEqual(Word word, char *string);
+boolean IsWordEqual(Word word, char *string);
 /* Mengembalikan 1 jika word sama dengan string, 0 jika tidak */
 
 void CopyWordToString(char *destination);
@@ -47,7 +48,7 @@ void ReadLine();
    I.S. : currentChar sembarang
    F.S. : currentWord berisi baris yang dibaca hingga NEWLINE atau MARK atau EOF */
 
-int IsWordNumber(Word word);
+boolean IsWordNumber(Word word);
 /* Mengembalikan 1 jika word adalah representasi angka, 0 jika tidak */
 
 int WordToInt(Word word);

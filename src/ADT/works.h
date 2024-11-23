@@ -1,11 +1,11 @@
 #ifndef WORKS_H
 #define WORKS_H
 
-#include "mesinkarakter.h"
-#include "mesinkata.h"
+#include "../ADT/mesinkarakter.h"
+#include "../ADT/mesinkata.h"
 #include <stdio.h>
-#include "time.h"
-#include "user.h"
+#include <time.h>
+#include "../ADT/user.h"
 
 
 #define MAX_WORKS 20
