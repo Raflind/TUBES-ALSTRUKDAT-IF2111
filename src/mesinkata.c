@@ -145,3 +145,13 @@ void clearNewline() {
         StartWord();
     }
 }
+
+int wordContainsBlank(Word word){
+    for (i = 0; i < word.length; i++){
+        if (word.contents[i] == ' ' || word.contents[i] == '\t' ||){
+            return 1;
+        }
+
+    }
+    return 0;
+}
