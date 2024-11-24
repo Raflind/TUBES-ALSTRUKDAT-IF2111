@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "user.h"
 #include "mesinkata.h"
+#include "mesinkarakter.h"
 
 int LoginUser(ListUser *list, User *activeUser) {
     if (activeUser->name[0] != '\0') {
@@ -9,16 +10,36 @@ int LoginUser(ListUser *list, User *activeUser) {
     }
 
     printf(">> LOGIN\n");
-    printf("Username: ");
     START();
-    StartWord();
+    int inputUsername = 1;
     char username[MAX_LEN];
-    CopyWordToString(username);
+    while (inputUsername){
+        printf("Username: ");
+        StartWords();
+        CopyWordToString(username);
+        if (wordContainsBlank(currentWord)){
+            printf("Username hanya boleh 1 kata.\n");
 
-    printf("Password: ");
-    StartWord();
+        }
+        else{
+            inputUsername = 0;
+        }
+    }
+
+    int inputPass = 1;
     char password[MAX_LEN];
-    CopyWordToString(password);
+    while (inputPass){
+        printf("Password: ");
+        StartWords();
+        CopyWordToString(password);
+        if (wordContainsBlank(currentWord)){
+            printf("Password hanya boleh 1 kata.\n");
+
+        }
+        else{
+            inputPass = 0;
+        }
+    }
 
     Word username2;
     Word password2;
