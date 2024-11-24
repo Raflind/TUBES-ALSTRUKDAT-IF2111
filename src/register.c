@@ -5,18 +5,36 @@
 
 void RegisterUser(ListUser *list) {
     printf(">> REGISTER\n");
-
-    printf("Username: ");
     START();
-    StartWord();
-    char username[MAX_LEN];
-    CopyWordToString(username);
+    int inputUsername = 1;
+    while inputUsername{
+        printf("Username: ");
+        StartWord();
+        char username[MAX_LEN];
+        CopyWordToString(username);
+        if (wordContainsBlank(username)){
+            printf("Username hanya boleh 1 kata. \n");
 
-    printf("Password: ");
-    StartWord();
-    char password[MAX_LEN];
-    CopyWordToString(password);
+        }
+        else{
+            inputUsername = 0;
+        }
+    }
 
+    int inputPass = 0;
+    while inputPass{
+        printf("Password: ");
+        StartWord();
+        char password[MAX_LEN];
+        CopyWordToString(password);
+        if (wordContainsBlank(password)){
+            printf("Password hanya boleh 1 kata. \n");
+
+        }
+        else{
+            inputPass = 0;
+        }
+    }
     Word username2;
     Word password2;
 
