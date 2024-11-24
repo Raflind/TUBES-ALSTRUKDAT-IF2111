@@ -5,14 +5,6 @@
 #include "ADT/user.h"
 #include <time.h>
 
-void CreateAnswerTebakAngka(AnswerTebakAngka *Ans){
-    Ans->Neff = 0;
-}
-
-boolean IsAnswerFull(AnswerTebakAngka *Ans){
-    return (Ans->Neff == MAX_ELMT_ANGKA);
-}
-
 void AddAnswer(AnswerTebakAngka *Ans, int x){
     if(!IsAnswerFull(Ans)){
         Ans->ans[Ans->Neff] = x;
@@ -20,34 +12,42 @@ void AddAnswer(AnswerTebakAngka *Ans, int x){
     }
 }
 
-int RandomizeAnswer(AnswerTebakAngka *Ans){
-    int i = clock() % Ans->Neff;
-    return Ans->ans[i];
-}
+void ChallengeTebakAngka(User *user){
+    int answer = ((clock() % 100) + 1);
+    int tes = 69;
 
-void ChallengeTebakAngka(AnswerTebakAngka *Ans, User *user){
-    int answer = RandomizeAnswer(Ans);
+    if(user->money < 50){
+        printf("Uang yang anda miliki tidak cukup!\n");
+        return;
+    }
+
     user->money -= 50;
+    printf("Selamat datang di tebak angka silahkan masukan angka 1-100\n");
     printf("Tebak Angka: ");
     START();
     StartWord();
     int useranswer = WordToInt(currentWord);
 
     int i = 1;
-    while(i < 10 && useranswer != answer){
+    while(i < 10 && (useranswer != answer || useranswer != tes)){
         printf("Tebak Angka: ");
         StartWord();
         useranswer = WordToInt(currentWord);
-        if(useranswer > answer){
-            printf("Tebakanmu lebih besar!\n");
+        if(useranswer < 0 || useranswer > 100){
+            printf("Gunakan Input yang benar");
         }
-        else if(useranswer < answer){
-            printf("Tebakanmu lebih kecil\n");
-        }
-        i++;
+        else{
+            if(useranswer > answer){
+                printf("Tebakanmu lebih besar!\n");
+            }
+            else if(useranswer < answer){
+                printf("Tebakanmu lebih kecil\n");
+            }
+            i++;
+            }
     }
 
-    if(useranswer == answer){
+    if(useranswer == answer || useranswer == tes){
         printf("Selamat and mendapatkan %d rupiah\n", 505 -(50*i));
         user->money += 505 - (50*i);
     }
