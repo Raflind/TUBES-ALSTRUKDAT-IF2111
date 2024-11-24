@@ -12,7 +12,7 @@ void display_store_list(ListBarang store_list) {
 void store_request(ListBarang store_list, Queue *requests) {
     printf("Nama barang yang diminta: ");
 
-    StartWord();
+    StartWords();
 
     if (currentWord.length == 0) {
         printf("Nama barang tidak boleh kosong!\n");
@@ -51,7 +51,7 @@ void store_supply(ListBarang *store_list, Queue *requests) {
 
     printf("Apakah kamu ingin menambahkan barang %s (Terima/Tunda/Tolak): ", item.name);
 
-    StartWord();
+    StartWords();
 
     if (currentWord.length == 0) {
         printf("Input tidak valid.\n");
@@ -64,7 +64,7 @@ void store_supply(ListBarang *store_list, Queue *requests) {
 
     if (string_compare(response, "Terima") == 0) {
         printf("Harga barang: ");
-        StartWord();
+        StartWords();
 
         if (currentWord.length == 0 || !IsWordNumber(currentWord)) {
             printf("Harga barang tidak valid.\n");
@@ -97,7 +97,7 @@ void store_supply(ListBarang *store_list, Queue *requests) {
 void store_remove(ListBarang *store_list) {
     printf("Nama barang yang akan dihapus: ");
 
-    StartWord();
+    StartWords();
 
     if (currentWord.length == 0) {
         printf("Nama barang tidak boleh kosong!\n");
@@ -124,7 +124,7 @@ void store_menu(ListBarang *store_list, Queue *requests) {
     while (running) {
         printf("\nMasukkan command (LIST, REQUEST, SUPPLY, REMOVE, QUIT): ");
 
-        StartWord();
+        StartWords();
 
         if (currentWord.length == 0) {
             printf("Command tidak dikenal.\n");
