@@ -31,6 +31,9 @@ boolean IsEOP();
 /* Mengirimkan true jika currentChar = MARK */
 
 void StartFile(char *filename);
+
 void CloseFile();
+
+void StartWriteFile(char *filename);
 
 #endif

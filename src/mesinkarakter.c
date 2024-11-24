@@ -46,3 +46,7 @@ void CloseFile() {
         pita = NULL;
     }
 }
+
+void StartWriteFile(char *filename) {
+    pita = fopen(filename, "w");
+}
