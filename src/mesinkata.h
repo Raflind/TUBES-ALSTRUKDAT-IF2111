@@ -23,6 +23,12 @@ void StartWord();
    F.S. : currentWord berisi kata yang sudah diakuisisi
           Jika currentChar = MARK atau EOF, maka currentWord.length = 0 */
 
+void StartWords();
+/* Memulai pembacaan kata dari input
+   I.S. : currentChar sembarang
+   F.S. : currentWord berisi kata-kata yang sudah diakuisisi
+          Jika currentChar = MARK atau EOF, maka currentWord.length = 0 */
+
 void AdvanceWord();
 /* Membaca kata berikutnya dari input
    I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
@@ -31,6 +37,13 @@ void AdvanceWord();
 
 void CopyWord();
 /* Mengakuisisi kata, menyimpan dalam currentWord
+   I.S. : currentChar adalah karakter pertama dari kata
+   F.S. : currentWord berisi kata yang sudah diakuisisi
+          currentChar = BLANK, TAB, NEWLINE, MARK, atau EOF
+          Jika panjang kata melebihi MAX_WORD_LENGTH, sisa kata "dipotong" */
+
+void CopyWords();
+/* Mengakuisisi kata-kata, menyimpan dalam currentWord
    I.S. : currentChar adalah karakter pertama dari kata
    F.S. : currentWord berisi kata yang sudah diakuisisi
           currentChar = BLANK, TAB, NEWLINE, MARK, atau EOF
