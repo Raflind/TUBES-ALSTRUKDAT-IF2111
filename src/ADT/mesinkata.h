@@ -59,5 +59,6 @@ int string_compare(char *s1, char *s2);
    positif jika s1 > s2 */
 void string_copy(char *dest, char *src);
 /* Menyalin string src ke dest */
+int strlent(char *str);
 
 #endif
