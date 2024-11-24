@@ -57,7 +57,13 @@ int string_compare(char *s1, char *s2);
 /* Mengembalikan 0 jika kedua string sama,
    negatif jika s1 < s2,
    positif jika s1 > s2 */
+
 void string_copy(char *dest, char *src);
 /* Menyalin string src ke dest */
+
+int strlent(char *str);
+
+void clearNewline();
+/* Membaca karakter sampai menemukan karakter newline */
 
 #endif

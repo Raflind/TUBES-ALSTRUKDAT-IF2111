@@ -28,7 +28,7 @@ void AdvanceWord() {
 
 void CopyWord() {
     int i = 0;
-    while (!IsEOP() && currentChar != ' ' && currentChar != '\t' && currentChar != '\n' && i < MAX_WORD_LENGTH - 1) {
+    while (!IsEOP() && currentChar != '\t' && currentChar != '\n' && i < MAX_WORD_LENGTH - 1) {
         currentWord.contents[i] = currentChar;
         ADV();
         i++;
@@ -105,8 +105,23 @@ int string_compare(char *s1, char *s2) {
     }
     return 0;
 }
+
 void string_copy(char *dest, char *src) {
     int i = 0;
     while ((dest[i] = src[i]) != '\0')
         i++;
+}
+
+int strlent(char *str){
+    int len = 0;
+    while(str[len]!='\0'){
+        len++;
+    }
+    return len;
+}
+
+void clearNewline() {
+    while (currentChar != '\n' && currentChar != MARK) {
+        StartWord();
+    }
 }
