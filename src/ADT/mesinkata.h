@@ -61,4 +61,6 @@ void string_copy(char *dest, char *src);
 /* Menyalin string src ke dest */
 int strlent(char *str);
 
+boolean IsSameWord(Word word1, Word word2)
+
 #endif
