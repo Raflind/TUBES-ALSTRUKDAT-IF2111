@@ -46,7 +46,7 @@ int main() {
     }
 
     // Tes IsSameWord
-    Word kata = {"BEBEK", 7};
+    Word kata = {"BEBEK", 5};
     if (IsSameWord(currentWord, kata)) {
         printf("%s sama dengan BEBEK\n", currentWord.contents);
     } else {
