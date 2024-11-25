@@ -66,6 +66,7 @@ int main(){
         else {
             printf("Command tidak dikenal. Masukkan HELP jika anda butuh bantuan. \n");
         }
+    }
 
     int logged = 0;
     printf("Silahkan masukkan command (REGISTER, LOGIN, HELP): \n");
@@ -79,19 +80,19 @@ int main(){
 
         else if (string_compare(input, "LOGIN") == 0){
             if (LoginUser(&userlist, &user) == 1){
-                logged = 1;
                 int menu = 1;
-                help_main();
+                help_main()
                 while (menu){
                     printf("Silahkan masukkan command: ");
                     StartWords();
-                    CopyWordToString(input);
+                    char inputmain[MAX_WORD_LENGTH]
+                    CopyWordToString(inputmain);
 
-                    if (string_compare(input, "WORK") == 0){
+                    if (string_compare(inputmain, "WORK") == 0){
                         DisplayWorks(worklist);
                     }
 
-                    else if (string_compare(input, "WORK CHALLENGE") == 0){
+                    else if (string_compare(inputmain, "WORK CHALLENGE") == 0){
                         printf("Daftar challenge yang tersedia: \n");
                         printf("1. Tebak Angka (biaya main = 50) \n");
                         printf("2. W0RDL399 (biaya main = 50) \n");
@@ -128,41 +129,43 @@ int main(){
 
                     }
 
-        else if (string_compare(input, "STORE LIST") == 0){
-            display_store_list(listbarang);
-        }
+                    else if (string_compare(input, "STORE LIST") == 0){
+                        display_store_list(listbarang);
+                    }
 
-        else if (string_compare(input, "STORE REQUEST") == 0){
-            store_request(listbarang, &queue);
-        }
+                    else if (string_compare(input, "STORE REQUEST") == 0){
+                        store_request(listbarang, &queue);
+                    }
 
-        else if (string_compare(input, "STORE SUPPLY") == 0){
-            store_supply(&listbarang, &queue);
-        }
+                    else if (string_compare(input, "STORE SUPPLY") == 0){
+                        store_supply(&listbarang, &queue);
+                    }
 
-        else if (string_compare(input, "STORE REMOVE") == 0){
-            store_remove(&store_list);
-        }
+                    else if (string_compare(input, "STORE REMOVE") == 0){
+                        store_remove(&store_list);
+                    }
 
-        else if (string_compare(input, "LOGOUT") == 0){
+                    else if (string_compare(input, "LOGOUT") == 0){
+                        LogoutUser(user);
+                        menu = 0;
 
-        }
+                    }
 
-        else if (string_compare(input, "SAVE") == 0){
-        }
+                    else if (string_compare(input, "SAVE") == 0){
+                        
+                    }
 
-        else if (string_compare(input, "QUIT") == 0){
-        }
+                    else if (string_compare(input, "QUIT") == 0){
+                    }
 
-        else{
-            printf("Command tidak dikenal. \n")
-        }
-
-
+                    else{
+                        printf("Command tidak dikenal. \n")
+                    }
 
 
-    }
 
+
+                }
             }
             else{
                 printf("Gagal untuk login. \n");
@@ -179,7 +182,7 @@ int main(){
 
     }
 
-   
+
 
 
 
@@ -187,4 +190,3 @@ int main(){
         
     }
 
-}
