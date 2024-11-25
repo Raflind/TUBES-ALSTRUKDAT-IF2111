@@ -39,6 +39,8 @@ void DisplayWorks(WorksList W);
 
 void UserWorks(WorksList *W, User *user);
 
+void LoadWorkList(WorksList *W);
+
 
 #endif
 

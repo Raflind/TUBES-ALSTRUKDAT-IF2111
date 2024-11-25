@@ -155,3 +155,17 @@ int wordContainsBlank(Word word){
     }
     return 0;
 }
+
+boolean IsSameWord(Word word1, Word word2){
+    if(word1.length != word2.length){
+        return false;
+    }
+    else{
+        for(int i = 0; i < word1.length;i++){
+            if(word1.contents[i] != word2.contents[i]){
+                return false;
+            }
+        }
+    }
+    return true;
+}

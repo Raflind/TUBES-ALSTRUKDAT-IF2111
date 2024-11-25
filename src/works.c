@@ -1,7 +1,7 @@
 #include "works.h"
 #include "mesinkarakter.h"
 #include "mesinkata.h"
-#include "ADT/user.h"
+#include "user.h"
 #include <stdio.h>
 #include <time.h>
 void CreateEmptyWorkList(WorksList *W){
@@ -12,6 +12,20 @@ void delay(int second){
     clock_t start_time = clock();
     clock_t end_time = start_time + second * CLOCKS_PER_SEC;
     while(clock() < end_time);
+}
+
+void LoadWorkList(WorksList *W){
+    CreateEmptyWorkList(W);
+    Works work;
+    char *works[] = {"Manager", "Sedot WC", "Kasir", "Supplier"};
+    int salary[] = {100, 50, 70, 80};
+    int delay[] = {10, 5, 7, 8};
+    for(int i = 0;i < 4;i++){
+        string_copy(work.workname, works[i]);
+        work.salary = salary[i];
+        work.delay = delay[i];
+        AddWork(W, work);
+    }
 }
 
 int Getidx(WorksList *W, Word word){
@@ -106,7 +120,7 @@ void UserWorks(WorksList *W, User *user){
     DisplayWorks(*W);
     printf("Masukkan pekerjaan yang dipilih : ");
     START();
-    StartWord();
+    StartWords();
     char selectwork[MAX_LEN];
     CopyWordToString(selectwork);
 
@@ -135,7 +149,7 @@ void UserWorks(WorksList *W, User *user){
         user->money += W->buffer[idx].salary;
     }
     else{
-        printf("Pekerjaan yang anda pilih tidak ada!");
+        printf("Pekerjaan yang anda pilih tidak ada!\n");
     }
 
 }

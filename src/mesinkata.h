@@ -82,4 +82,6 @@ void clearNewline();
 int wordContainsBlank(Word word);
 //Mengembalikan 1 jika kata mengandung blank ' ' atau '\t', 0 jika tidak
 
+boolean IsSameWord(Word word1, Word word2);
+
 #endif
