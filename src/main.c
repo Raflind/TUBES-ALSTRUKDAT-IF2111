@@ -29,36 +29,30 @@ int main(){
     WorksList worklist;
 
     CreateEmptyWorkList(&worklist);
+    LoadWorkList(&worklist);
     CreateListUser(&userlist);
     user.name[0] = '\0';
     InitializeListBarang(&listbarang);
     CreateQueue(&queue);
 
-    char input[MAX_LEN];
+    
     printf("Selamat Datang di PURRMART, silahkan masukkan command (START, LOAD, HELP): \n");
     START();
 
-    int started = 0;
-    while (!started){
+    char input[MAX_WORD_LENGTH];
+    int started = 1;
+    while (started == 1){
         StartWords();
         CopyWordToString(input);
         if (string_compare(input, "START") == 0){
             if (Startr(&userlist, &listbarang) == 2){
-                started = 1;
-            }
-            else{
-                printf();
-
+                started = 0;
             }
         }
         else if (string_compare(input, "LOAD") == 0){
             if (LoadFile(&userlist, &listbarang) == 2){
-                started = 1;
+                started = 0;
             }
-            else{
-                printf();
-            }
-
         }
         else if (string_compare(input, "HELP") == 0){
             help_welcome();
@@ -67,10 +61,10 @@ int main(){
             printf("Command tidak dikenal. Masukkan HELP jika anda butuh bantuan. \n");
         }
     }
-
-    int logged = 0;
+    int logged = 1;
     printf("Silahkan masukkan command (REGISTER, LOGIN, HELP): \n");
-    while(!logged){
+    while(logged){
+        START();
         StartWords();
         CopyWordToString(input);
 
@@ -81,15 +75,16 @@ int main(){
         else if (string_compare(input, "LOGIN") == 0){
             if (LoginUser(&userlist, &user) == 1){
                 int menu = 1;
-                help_main()
+                help_main();
                 while (menu){
                     printf("Silahkan masukkan command: ");
+                    START();
                     StartWords();
-                    char inputmain[MAX_WORD_LENGTH]
+                    char inputmain[MAX_WORD_LENGTH];
                     CopyWordToString(inputmain);
 
                     if (string_compare(inputmain, "WORK") == 0){
-                        DisplayWorks(worklist);
+                        UserWorks(&worklist, &user);
                     }
 
                     else if (string_compare(inputmain, "WORK CHALLENGE") == 0){
@@ -100,10 +95,10 @@ int main(){
 
                         int inChallenge = 0;
                         while (!inChallenge){
-                            printf("\nMasukan challenge yang hendak dimainkan :")
+                            printf("\nMasukan challenge yang hendak dimainkan :");
 
                             char inputChallenge[MAX_LEN];
-
+                            START();
                             StartWords();
                             CopyWordToString(inputChallenge);
 
@@ -118,48 +113,55 @@ int main(){
                             }
 
                             else if (string_compare(inputChallenge, "3") == 0){
-                                printf("Anda keluar dari challenge. \n")
+                                printf("Anda keluar dari challenge. \n");
                                 inChallenge = 1;
                             }
 
                             else {
-                                printf("Command tidak dikenal. \n")
+                                printf("Command tidak dikenal. \n");
                             }
                         }
 
                     }
 
-                    else if (string_compare(input, "STORE LIST") == 0){
+                    else if (string_compare(inputmain, "STORE LIST") == 0){
                         display_store_list(listbarang);
                     }
 
-                    else if (string_compare(input, "STORE REQUEST") == 0){
+                    else if (string_compare(inputmain, "STORE REQUEST") == 0){
                         store_request(listbarang, &queue);
                     }
 
-                    else if (string_compare(input, "STORE SUPPLY") == 0){
+                    else if (string_compare(inputmain, "STORE SUPPLY") == 0){
                         store_supply(&listbarang, &queue);
                     }
 
-                    else if (string_compare(input, "STORE REMOVE") == 0){
-                        store_remove(&store_list);
+                    else if (string_compare(inputmain, "STORE REMOVE") == 0){
+                        store_remove(&listbarang);
                     }
 
-                    else if (string_compare(input, "LOGOUT") == 0){
-                        LogoutUser(user);
+                    else if (string_compare(inputmain, "LOGOUT") == 0){
+                        LogoutUser(&user);
                         menu = 0;
 
                     }
 
-                    else if (string_compare(input, "SAVE") == 0){
-                        
+                    else if (remainderWord(inputmain, "SAVE")){
+                        save(&userlist, &listbarang, inputmain);
                     }
 
-                    else if (string_compare(input, "QUIT") == 0){
+                    else if (string_compare(inputmain, "QUIT") == 0){
+                        quit(&queue, &userlist, &listbarang);
+                        return 0;
                     }
+
+                    else if (string_compare(inputmain, "HELP") == 0){
+                        help_main();
+                    }
+
 
                     else{
-                        printf("Command tidak dikenal. \n")
+                        printf("Command tidak dikenal. \n");
                     }
 
 
@@ -179,14 +181,6 @@ int main(){
         else{
             printf("Command tidak dikenal. Masukkan HELP jika anda butuh bantuan. \n");
         }
-
     }
-
-
-
-
-
-
-        
-    }
+}
 
