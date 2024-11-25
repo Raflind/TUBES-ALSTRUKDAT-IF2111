@@ -7,25 +7,18 @@ void quit(Queue *request, ListUser *listuser, ListBarang *listbarang) {
     do {
         printf("Apakah ingin melakukan save sebelum keluar? (Y/N): ");
         START();  
+        char saved[MAX_WORD_LENGTH];
+        StartWords();
+        CopyWordToString(saved);
 
-        if (currentChar == 'Y') {
+        if (string_compare(saved, "Y") == 0) {
             isValid = 1;
-
-            printf(">>SAVE ");
-            char saved[100];
-            StartWords();
-            CopyWordToString(saved);
-            for (int i = 0; saved[i] != '\0'; i++) {
-                if (saved[i] == '\n') {
-                    saved[i] = '\0';
-                    break;
-                }
-            }
-
             save(listuser, listbarang, saved);
-        } else if (currentChar == 'N') {
+        } 
+        else if (string_compare(saved, "N") == 0) {
             isValid = 1;  
-        } else {
+        } 
+        else {
             printf("Input tidak valid. Mohon masukkan 'Y' atau 'N'.\n");
             isValid = 0;
         }
