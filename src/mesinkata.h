@@ -77,4 +77,10 @@ int wordContainsBlank(Word word);
 
 boolean IsSameWord(Word word1, Word word2);
 
+boolean IsSameFirstWord(char *s1, char *s2);
+/* Mengembalikan true jika kata pertama pada s1 sama dengan s2 */
+
+boolean remainderWord(char *s1, char *s2);
+
+
 #endif

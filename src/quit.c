@@ -8,13 +8,12 @@ void quit(Queue *request, ListUser *listuser, ListBarang *listbarang) {
         printf("Apakah ingin melakukan save sebelum keluar? (Y/N): ");
         START();  
 
-        if (currentChar == 'y') {
+        if (currentChar == 'Y') {
             isValid = 1;
 
             printf(">>SAVE ");
-            clearNewline();
             char saved[100];
-            StartWord();
+            StartWords();
             CopyWordToString(saved);
             for (int i = 0; saved[i] != '\0'; i++) {
                 if (saved[i] == '\n') {
@@ -24,12 +23,11 @@ void quit(Queue *request, ListUser *listuser, ListBarang *listbarang) {
             }
 
             save(listuser, listbarang, saved);
-        } else if (currentChar == 'n') {
+        } else if (currentChar == 'N') {
             isValid = 1;  
         } else {
             printf("Input tidak valid. Mohon masukkan 'Y' atau 'N'.\n");
             isValid = 0;
-            clearNewline();
         }
     } while (!isValid);
 

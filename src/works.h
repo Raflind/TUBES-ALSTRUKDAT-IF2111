@@ -9,7 +9,7 @@
 
 
 #define MAX_WORKS 20
-#define MAX_LEN 50
+#define MAX_LEN 100
 #define undefined -999
 
 typedef struct{

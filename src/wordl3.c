@@ -134,9 +134,8 @@ void PlayWordl3(User *user) {
     else{
         printf("Boo! Anda kalah.\n");
         printf("Kata yang benar adalah: ");
-        for (int i = 0; i < secretWord.length; i++) {
-            printf("%c", secretWord.contents[i]);
-        }
+        printf("%s", secretWord.contents);
+        printf("\n");
         printf("\n");
     }
 }

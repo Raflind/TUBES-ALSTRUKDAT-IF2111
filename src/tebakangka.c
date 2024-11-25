@@ -4,13 +4,14 @@
 #include "boolean.h"
 #include "ADT/user.h"
 #include <time.h>
-
+/*
 void AddAnswer(AnswerTebakAngka *Ans, int x){
     if(!IsAnswerFull(Ans)){
         Ans->ans[Ans->Neff] = x;
         Ans->Neff++;
     }
 }
+*/
 
 void ChallengeTebakAngka(User *user){
     int answer = ((clock() % 100) + 1);
@@ -23,18 +24,15 @@ void ChallengeTebakAngka(User *user){
 
     user->money -= 50;
     printf("Selamat datang di tebak angka silahkan masukan angka 1-100\n");
-    printf("Tebak Angka: ");
-    START();
-    StartWord();
     int useranswer = WordToInt(currentWord);
 
     int i = 1;
-    while(i < 10 && (useranswer != answer || useranswer != tes)){
+    while(i < 10 && (useranswer != answer && useranswer != tes)){
         printf("Tebak Angka: ");
         StartWord();
         useranswer = WordToInt(currentWord);
-        if(useranswer < 0 || useranswer > 100){
-            printf("Gunakan Input yang benar");
+        if(useranswer < 0 || useranswer > 100 || !IsWordNumber(currentWord)){
+            printf("Gunakan Input yang benar\n");
         }
         else{
             if(useranswer > answer){

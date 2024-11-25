@@ -148,3 +148,25 @@ boolean IsSameWord(Word word1, Word word2){
     }
     return true;
 }
+
+boolean IsSameFirstWord(char *s1, char *s2){
+    for (int i = 0; i < strlent(s2); i ++){
+        if (s1[i] != s2[i]){
+            return false;
+        }
+    }
+    return true;
+}
+
+boolean remainderWord(char *s1, char *s2){
+    if (IsSameFirstWord(s1, s2)){
+        for (int i = 0; i < (strlent(s2) - strlent(s1)); i++){
+            s1[i] = s1[(strlent(s2) - strlent(s1)) + 1];
+        }
+        return true;
+    }
+    
+    else{
+        return false;
+    }
+}

@@ -36,4 +36,4 @@ int main() {
 }
 
 
-//gcc main-store.c barang.c mesinkarakter.c mesinkata.c queue.c listbarang.c store.c -o main
+//gcc main-store.c mesinkarakter.c mesinkata.c queue.c listbarang.c store.c -o mains

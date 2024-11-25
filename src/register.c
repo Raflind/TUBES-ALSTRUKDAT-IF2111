@@ -5,7 +5,6 @@
 
 void RegisterUser(ListUser *list) {
     printf(">> REGISTER\n");
-    START();
     int inputUsername = 1;
     char username[MAX_LEN];
     while (inputUsername){

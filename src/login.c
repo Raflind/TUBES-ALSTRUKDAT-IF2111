@@ -10,7 +10,6 @@ int LoginUser(ListUser *list, User *activeUser) {
     }
 
     printf(">> LOGIN\n");
-    START();
     int inputUsername = 1;
     char username[MAX_LEN];
     while (inputUsername){
