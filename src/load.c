@@ -15,7 +15,7 @@ int LoadFile(ListUser *listuser, ListBarang *listbarang){
  printf("\n");
  snprintf(filepath, sizeof(filepath), "../saves/%s.txt", filename);
  StartFile(filepath);
- if (IsEOP()) {
+ if (IsEOP()){
   printf("Savefile gagal dibuka. Silahkan masukkan nama file yang benar.\n");
   return 1;
  }

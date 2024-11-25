@@ -9,7 +9,7 @@ int Startr(ListUser *listuser, ListBarang *listbarang){
  char filepath[200];
  snprintf(filepath, sizeof(filepath), "../saves/file_konfigurasi.txt");
  StartFile(filepath);
- if (IsEOP()) {
+ if (IsEOP()){
   printf("PURRMART gagal di-start. You're cooked.\n");
   return 1;
  }

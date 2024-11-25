@@ -16,7 +16,4 @@ void store_supply(ListBarang *store_list, Queue *requests);
 void store_remove(ListBarang *store_list);
 /* Menghapus barang dari toko berdasarkan nama */
 
-void store_menu(ListBarang *store_list, Queue *requests);
-/* Menampilkan menu operasi toko dan memproses command pengguna */
-
 #endif
