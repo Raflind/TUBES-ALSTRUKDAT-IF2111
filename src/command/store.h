@@ -1,8 +1,8 @@
 #ifndef STORE_H
 #define STORE_H
 
-#include "listbarang.h"
-#include "queue.h"
+#include "../ADT/listbarang/listbarang.h"
+#include "../ADT/queue/queue.h"
 
 void display_store_list(ListBarang store_list);
 /* Menampilkan daftar barang yang ada di toko */
@@ -15,8 +15,5 @@ void store_supply(ListBarang *store_list, Queue *requests);
 
 void store_remove(ListBarang *store_list);
 /* Menghapus barang dari toko berdasarkan nama */
-
-void store_menu(ListBarang *store_list, Queue *requests);
-/* Menampilkan menu operasi toko dan memproses command pengguna */
 
 #endif

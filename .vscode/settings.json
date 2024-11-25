@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "barang.h": "c",
+        "user.h": "c",
+        "listbarang.h": "c",
+        "start.h": "c"
+    }
+}

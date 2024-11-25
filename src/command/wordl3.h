@@ -5,10 +5,10 @@
 #define MAX_ELMT_WORDL 10
 #define MAX_ATTEMPTS 5
 
-#include "mesinkarakter.h"
-#include "mesinkata.h"
-#include "boolean.h"
-#include "ADT/user.h"
+#include "../ADT/mesinkarakter/mesinkarakter.h"
+#include "../ADT/mesinkata/mesinkata.h"
+#include "../ADT/boolean.h"
+#include "../ADT/user/user.h"
 #include <time.h>
 
 typedef struct{
