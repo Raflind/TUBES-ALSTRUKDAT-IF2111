@@ -9,7 +9,6 @@ int LoadFile(ListUser *listuser, ListBarang *listbarang){
  char filename[100];
  char filepath[200];
  printf(">> LOAD: ");
- START();
  StartWord();
  CopyWordToString(filename);
  printf("\n");

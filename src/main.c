@@ -146,8 +146,16 @@ int main(){
 
                     }
 
-                    else if (remainderWord(inputmain, "SAVE")){
-                        save(&userlist, &listbarang, inputmain);
+                    else if (IsSameFirstWord(inputmain, "SAVE")){
+                        remainderWord(inputmain, "SAVE");
+                        if (strlent(inputmain) > 0 && string_compare(inputmain, "SAVE") != 0){
+                            
+                            save(&userlist, &listbarang, inputmain);
+                        }
+                        else{
+                            printf("Nama file tidak boleh kosong. SAVE (namafile)\n");
+                        }
+                        
                     }
 
                     else if (string_compare(inputmain, "QUIT") == 0){

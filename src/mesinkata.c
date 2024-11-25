@@ -158,15 +158,13 @@ boolean IsSameFirstWord(char *s1, char *s2){
     return true;
 }
 
-boolean remainderWord(char *s1, char *s2){
+void remainderWord(char *s1, char *s2){
     if (IsSameFirstWord(s1, s2)){
-        for (int i = 0; i < (strlent(s2) - strlent(s1)); i++){
-            s1[i] = s1[(strlent(s2) - strlent(s1)) + 1];
+        int selisih = (strlent(s1) - strlent(s2) - 1);
+        for (int i = 0; i < selisih; i++){
+            s1[i] = s1[(i + 5)];
         }
-        return true;
+        s1[(strlent(s1) - strlent(s2) - 1)] = '\0';
     }
     
-    else{
-        return false;
-    }
 }
