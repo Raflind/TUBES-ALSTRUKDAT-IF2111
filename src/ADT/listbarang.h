@@ -3,7 +3,7 @@
 
 #include "boolean.h"
 #include "barang.h"
-#include "mesinkarakter.h"
+#include "mesinkata.h"
 
 typedef struct {
     Barang *buffer;

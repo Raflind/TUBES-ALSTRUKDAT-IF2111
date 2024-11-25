@@ -1,5 +1,4 @@
 #include "mesinkata.h"
-#include "boolean.h"
 
 Word currentWord;
 
@@ -18,6 +17,15 @@ void StartWord() {
     }
 }
 
+void StartWords() {
+    IgnoreBlanks();
+    if (!IsEOP()) {
+        CopyWords();
+    } else {
+        currentWord.length = 0;
+    }
+}
+
 void AdvanceWord() {
     IgnoreBlanks();
     if (!IsEOP()) {
@@ -29,6 +37,17 @@ void AdvanceWord() {
 
 void CopyWord() {
     int i = 0;
+    while (!IsEOP() && currentChar != ' ' && currentChar != '\t' && currentChar != '\n' && i < MAX_WORD_LENGTH - 1) {
+        currentWord.contents[i] = currentChar;
+        ADV();
+        i++;
+    }
+    currentWord.contents[i] = '\0';
+    currentWord.length = i;
+}
+
+void CopyWords() {
+    int i = 0;
     while (!IsEOP() && currentChar != '\t' && currentChar != '\n' && i < MAX_WORD_LENGTH - 1) {
         currentWord.contents[i] = currentChar;
         ADV();
@@ -38,11 +57,11 @@ void CopyWord() {
     currentWord.length = i;
 }
 
-boolean IsWordEqual(Word word, char *string) {
+int IsWordEqual(Word word, char *string) {
     int i = 0;
     while (i < word.length && string[i] != '\0') {
         if (word.contents[i] != string[i]) {
-            return false;
+            return 0;
         }
         i++;
     }
@@ -57,33 +76,18 @@ void CopyWordToString(char *destination) {
     destination[i] = '\0';
 }
 
-void ReadLine() {
-    int i = 0;
-    while (!IsEOP() && currentChar != '\n' && i < MAX_WORD_LENGTH - 1) {
-        currentWord.contents[i] = currentChar;
-        ADV();
-        i++;
-    }
-    currentWord.contents[i] = '\0';
-    currentWord.length = i;
-    /* Jika currentChar adalah newline, kita harus ADV sekali lagi untuk mengkonsumsi newline */
-    if (currentChar == '\n') {
-        ADV();
-    }
-}
-
-boolean IsWordNumber(Word word) {
+int IsWordNumber(Word word) {
     int i = 0;
     if (word.length == 0) {
-        return false;
+        return 0;
     }
     while (i < word.length) {
         if (word.contents[i] < '0' || word.contents[i] > '9') {
-            return false;
+            return 0;
         }
         i++;
     }
-    return true;
+    return 1;
 }
 
 int WordToInt(Word word) {
@@ -106,15 +110,41 @@ int string_compare(char *s1, char *s2) {
     }
     return 0;
 }
+
 void string_copy(char *dest, char *src) {
     int i = 0;
     while ((dest[i] = src[i]) != '\0')
         i++;
 }
+
 int strlent(char *str){
     int len = 0;
     while(str[len]!='\0'){
         len++;
     }
     return len;
+}
+
+int wordContainsBlank(Word word){
+    for (int i = 0; i < word.length; i++){
+        if (word.contents[i] == ' ' || word.contents[i] == '\t'){
+            return 1;
+        }
+
+    }
+    return 0;
+}
+
+boolean IsSameWord(Word word1, Word word2){
+    if(word1.length != word2.length){
+        return false;
+    }
+    else{
+        for(int i = 0; i < word1.length;i++){
+            if(word1.contents[i] != word2.contents[i]){
+                return false;
+            }
+        }
+    }
+    return true;
 }

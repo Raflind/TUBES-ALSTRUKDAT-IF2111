@@ -76,21 +76,6 @@ void CopyWordToString(char *destination) {
     destination[i] = '\0';
 }
 
-void ReadLine() {
-    int i = 0;
-    while (!IsEOP() && currentChar != '\n' && i < MAX_WORD_LENGTH - 1) {
-        currentWord.contents[i] = currentChar;
-        ADV();
-        i++;
-    }
-    currentWord.contents[i] = '\0';
-    currentWord.length = i;
-    /* Jika currentChar adalah newline, kita harus ADV sekali lagi untuk mengkonsumsi newline */
-    if (currentChar == '\n') {
-        ADV();
-    }
-}
-
 int IsWordNumber(Word word) {
     int i = 0;
     if (word.length == 0) {
@@ -138,12 +123,6 @@ int strlent(char *str){
         len++;
     }
     return len;
-}
-
-void clearNewline() {
-    while (currentChar != '\n' && currentChar != MARK) {
-        StartWord();
-    }
 }
 
 int wordContainsBlank(Word word){

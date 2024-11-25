@@ -55,11 +55,6 @@ int IsWordEqual(Word word, char *string);
 void CopyWordToString(char *destination);
 /* Menyalin isi currentWord ke destination */
 
-void ReadLine();
-/* Membaca satu baris penuh dari input
-   I.S. : currentChar sembarang
-   F.S. : currentWord berisi baris yang dibaca hingga NEWLINE atau MARK atau EOF */
-
 int IsWordNumber(Word word);
 /* Mengembalikan 1 jika word adalah representasi angka, 0 jika tidak */
 
@@ -75,12 +70,10 @@ void string_copy(char *dest, char *src);
 /* Menyalin string src ke dest */
 
 int strlent(char *str);
-
-void clearNewline();
-/* Membaca karakter sampai menemukan karakter newline */
+/* Menghitung panjang string*/
 
 int wordContainsBlank(Word word);
-//Mengembalikan 1 jika kata mengandung blank ' ' atau '\t', 0 jika tidak
+/* Mengembalikan 1 jika kata mengandung blank ' ' atau '\t', 0 jika tidak */
 
 boolean IsSameWord(Word word1, Word word2);
 
