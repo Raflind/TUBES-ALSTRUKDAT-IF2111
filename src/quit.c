@@ -13,7 +13,11 @@ void quit(Queue *request, ListUser *listuser, ListBarang *listbarang) {
 
         if (string_compare(saved, "Y") == 0) {
             isValid = 1;
-            save(listuser, listbarang, saved);
+            printf("Masukkan nama file: ");
+            char savefile[MAX_WORD_LENGTH];
+            StartWords();
+            CopyWordToString(savefile);
+            save(listuser, listbarang, savefile);
         } 
         else if (string_compare(saved, "N") == 0) {
             isValid = 1;  
