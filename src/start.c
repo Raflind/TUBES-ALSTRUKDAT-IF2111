@@ -5,13 +5,13 @@
 #include "mesinkata.h"
 #include "mesinkarakter.h"
 
-void Startr(ListUser *listuser, ListBarang *listbarang){
+int Startr(ListUser *listuser, ListBarang *listbarang){
  char filepath[200];
  snprintf(filepath, sizeof(filepath), "../saves/file_konfigurasi.txt");
  StartFile(filepath);
  if (IsEOP()) {
   printf("PURRMART gagal di-start. You're cooked.\n");
-  return;
+  return 1;
  }
  IgnoreBlanks();
  CopyWord();
@@ -21,12 +21,12 @@ void Startr(ListUser *listuser, ListBarang *listbarang){
  for(int i=0; i<100; i++){
 	baran.name[i] = '\0';
  }
- for (int i=0;i<n;i++) {
+ for (int i=0;i<n;i++){
   IgnoreBlanks();
   StartWord();
   pric = WordToInt(currentWord);
   IgnoreBlanks();
-  StartWord();
+  StartWords();
 	int tempo = currentWord.length;
   for (int j=0;j<tempo;j++){
     baran.name[j] = currentWord.contents[j];
@@ -54,7 +54,7 @@ void Startr(ListUser *listuser, ListBarang *listbarang){
 	rando.password[i] = '\0';
  }
  //printf("m = %d\n", m);
- for (int i=0;i<m;i++) {
+ for (int i=0;i<m;i++){
   IgnoreBlanks();
   StartWord();
   moni = WordToInt(currentWord);
@@ -62,13 +62,13 @@ void Startr(ListUser *listuser, ListBarang *listbarang){
   IgnoreBlanks();
   StartWord();
   int tempu = currentWord.length;
-  for (int j=0;j<tempu;j++) {
+  for (int j=0;j<tempu;j++){
     rando.name[j] = currentWord.contents[j];
   }
   IgnoreBlanks();
   StartWord();
   int tempa = currentWord.length;
-  for (int j=0;j<tempa;j++) {
+  for (int j=0;j<tempa;j++){
     rando.password[j] = currentWord.contents[j];
   }
   AddUser(listuser, rando);
@@ -86,4 +86,5 @@ void Startr(ListUser *listuser, ListBarang *listbarang){
  }
  CloseFile(); 
  printf("PURRMART berhasil di-start\n");
+ return 2;
 }

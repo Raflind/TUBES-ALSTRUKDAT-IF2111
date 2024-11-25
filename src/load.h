@@ -3,6 +3,6 @@
 #include "user.h"
 #include "listbarang.h"
 
-void LoadFile(ListUser *listuser, ListBarang *listbarang);
+int LoadFile(ListUser *listuser, ListBarang *listbarang);
 
 #endif
