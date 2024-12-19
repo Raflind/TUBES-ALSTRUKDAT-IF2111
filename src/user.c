@@ -24,15 +24,15 @@ void AddUser(ListUser *list, User newUser) {
     }
 }
 
-User *FindUser(ListUser *list, char *username) {
+int FindUser(ListUser *list, char *username) {
     for (int i = 0; i < list->nEff; i++) {
         int j = 0;
         while (username[j] != '\0' && list->buffer[i].name[j] != '\0' && username[j] == list->buffer[i].name[j]) {
             j++;
         }
         if (username[j] == '\0' && list->buffer[i].name[j] == '\0') {
-            return &list->buffer[i];
+            return i;
         }
     }
-    return NULL;
+    return -1;
 }

@@ -1,8 +1,10 @@
-#ifndef LISTUSER_H
-#define LISTUSER_H
+#ifndef USER_H
+#define USER_H
 
-#include <stdio.h>
 #include "boolean.h"
+#include "cart.h"
+#include "stackhistory.h"
+#include "wishlist.h"
 
 #define MAX_USERS 100
 #define MAX_LEN 100
@@ -11,6 +13,9 @@ typedef struct {
     char name[MAX_LEN];
     char password[MAX_LEN];
     int money;
+    Map keranjang;
+    Stack riwayat_pembelian;
+    LinkedList wishlist;
 } User;
 
 typedef struct {
@@ -18,9 +23,10 @@ typedef struct {
     int nEff;
 } ListUser;
 
+
 void CreateListUser(ListUser *list);
 boolean IsUserExist(ListUser *list, char *username);
 void AddUser(ListUser *list, User newUser);
-User *FindUser(ListUser *list, char *username);
+int FindUser(ListUser *list, char *username);
 
 #endif
