@@ -168,3 +168,132 @@ void remainderWord(char *s1, char *s2){
     }
     
 }
+
+void remainderWordalter(char *s1, char *s2) {
+    if (IsSameFirstWord(s1, s2)) {
+        int selisih = (strlent(s1) - strlent(s2) - 1);
+        for (int i = 0; i < selisih; i++){
+            s1[i] = s1[(i + strlent(s2) + 1)];
+        }
+        s1[(strlent(s1) - strlent(s2) - 1)] = '\0';
+    }
+}
+
+void splitString(char *input, char *str1, char *str2) {
+    int i = 0;
+    int j = 0;
+    
+    while (input[i] != ' ' && input[i] != '\0') {
+        str1[i] = input[i];
+        i++;
+    }
+    str1[i] = '\0';
+    
+    if (input[i] == ' ') {
+        i++;
+    }
+    
+    while (input[i] != '\0') {
+        str2[j] = input[i];
+        i++;
+        j++;
+    }
+    str2[j] = '\0';
+}
+
+int stringToInt(char *str) {
+    int result = 0;
+    int i = 0;
+
+    while (str[i] != '\0') {
+        if (str[i] >= '0' && str[i] <= '9') {
+            result = result * 10 + (str[i] - '0');
+        }
+        i++;
+    }
+    
+    return result;
+}
+
+boolean stringIsNum(char *str) {
+    if (str[0] == '\0') {
+        return false;
+    }
+    
+    int i = 0;
+    
+    while (str[i] != '\0') {
+        if (str[i] < '0' || str[i] > '9') {
+            return false;
+        }
+        i++;
+    }
+    
+    return true;
+}
+
+boolean isValidForSplit(char *input) {
+    int i = 0;
+    boolean foundFirstWord = false;
+    boolean foundSpace = false;
+    boolean foundSecondWord = false;
+    
+    // empty string
+    if (input == NULL || input[0] == '\0') {
+        return false;
+    }
+    
+    // first character isn't a space
+    if (input[0] == ' ') {
+        return false;
+    }
+    
+    while (input[i] != '\0' && !foundSpace) {
+        if (input[i] == ' ') {
+            foundSpace = true;
+        }
+        i++;
+    }
+    
+    // Must have found a space
+    if (!foundSpace) {
+        return false;
+    }
+    
+    // Skip any additional spaces
+    while (input[i] == ' ') {
+        i++;
+    }
+    
+    // Check if there's text after spaces
+    if (input[i] == '\0') {
+        return false;
+    }
+    
+    // Process second word
+    while (input[i] != '\0' && input[i] != ' ') {
+        foundSecondWord = true;
+        i++;
+    }
+    
+    // Check no content after second word
+    while (input[i] != '\0') {
+        if (input[i] != ' ') {
+            return false;  // Found third character
+        }
+        i++;
+    }
+    
+    return foundSpace && foundSecondWord;
+}
+
+boolean isThereBlank(char *str) {
+    int i = 0;
+    while (str[i] != '\0') {
+        if (str[i] == ' ' || str[i] == '\t') {
+            return true;
+        }
+        i++;
+    }
+    return false;
+}

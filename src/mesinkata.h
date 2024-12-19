@@ -81,6 +81,25 @@ boolean IsSameFirstWord(char *s1, char *s2);
 /* Mengembalikan true jika kata pertama pada s1 sama dengan s2 */
 
 void remainderWord(char *s1, char *s2);
+/* Mengambil kata setelah s1 yang dipisahkan oleh 1 spasi */
 
+void remainderWordalter(char *s1, char *s2);
+/* sama seperti remainderWord tapi lebih universal */
+
+void splitString(char *input, char *str1, char *str2);
+/* Memisahkan string dengan format "str1 <spasi> str2" menjadi "str1" dan "str2"*/
+
+int stringToInt(char *str);
+/* I.S stringIsNum = true */
+/* Mengubah string menjadi integer */
+
+boolean stringIsNum(char *str);
+/* true jika setiap karakter pada string berupa angka */
+
+boolean isValidForSplit(char *input);
+/* Mengecek apakah string dapat di split, lebih tepatnya dalam format "str1 <spasi> str2" */
+
+boolean isThereBlank(char *str);
+/* Mengecek apakah ada blank pada string */
 
 #endif
