@@ -40,6 +40,7 @@ int main(){
 
         char word[MAX_LEN];
         CopyWordToString(word);
+        int len = lengthList(wishlist);
 
         if (IsSameFirstWord(word, "WISHLIST")) {
             remainderWordalter(word, "WISHLIST");
@@ -48,7 +49,7 @@ int main(){
             }
 
             else if (IsSameFirstWord(word, "SWAP")) {
-                wishlistSwap(&wishlist, word);
+                wishlistSwap(&wishlist, word, len);
             }
 
             else if (IsSameFirstWord(word, "REMOVE")) {
