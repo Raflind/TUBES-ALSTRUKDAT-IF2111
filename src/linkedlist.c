@@ -8,7 +8,7 @@ void CreateList(List *l) {
     FIRST(*l) = NULL;
 }
 
-boolean isEmpty(List l) {
+boolean isEmptyList(List l) {
     return (FIRST(l) == NULL);
 }
 
@@ -51,7 +51,7 @@ int indexOf(List l, ElType val) {
     if (found) {
         return idx;
     } else {
-        return IDX_UNDEF;
+        return IDX_UNDEF_LIST;
     }
 }
 
@@ -70,7 +70,7 @@ void insertFirst(List *l, ElType val) {
 }
 
 void insertLast(List *l, ElType val) {
-    if (isEmpty(*l)) {
+    if (isEmptyList(*l)) {
         insertFirst(l, val);
     } else {
         Address p = (Address)malloc(sizeof(Node));
@@ -175,7 +175,7 @@ void deleteAt(List *l, int idx, ElType *val) {
     }
 }
 
-int length(List l) {
+int lengthList(List l) {
     int ctr = 0;
     Address p = FIRST(l);
     while (p != NULL) {
@@ -205,12 +205,12 @@ List concat(List l1, List l2) {
 }
 
 void swapIdx(List *l, int idx1, int idx2) {
-    if (isEmpty(*l) || length(*l) <= 1) {
+    if (isEmptyList(*l) || lengthList(*l) <= 1) {
         return;
     }
 
-    int listLength = length(*l);
-    if (idx1 < 0 || idx1 >= listLength || idx2 < 0 || idx2 >= listLength) {
+    int listlengthList = lengthList(*l);
+    if (idx1 < 0 || idx1 >= listlengthList || idx2 < 0 || idx2 >= listlengthList) {
         return;
     }
 
@@ -252,7 +252,7 @@ void swapIdx(List *l, int idx1, int idx2) {
 }
 
 boolean isInList(List l, ElType val) {
-    if (isEmpty(l)) {
+    if (isEmptyList(l)) {
         return false;
     }
     
@@ -277,7 +277,7 @@ void printList(List l) {
 }
 
 void clearList(List *l) {
-    while (!isEmpty(*l)) {
+    while (!isEmptyList(*l)) {
         Address p = FIRST(*l);
         FIRST(*l) = NEXT(p);
         free(INFO(p));
