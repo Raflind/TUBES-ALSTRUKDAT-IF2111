@@ -10,13 +10,13 @@
 void wishlistAdd(ListBarang store, List *wishlist);
 /* Menambah barang pada wishlist, bila kosong maka akan insertFirst, bila tidak akan insertLast */
 
-void wishlistSwap(List *wishlist, ElType word);
+void wishlistSwap(List *wishlist, char *word);
 /* Menukar urutan barang pada wishlist */
 
 void wishlistRemoveName(List *wishlist);
 /* Menghilangkan barang dari wishlist sesuai nama barang */
 
-void wishlistRemoveIdx(List *wishlist, ElType word);
+void wishlistRemoveIdx(List *wishlist, char *word);
 /* Menghilangkan barang dari wishlist sesuai index yang diberikan */
 
 void wishlistClear(List *wishlist);
