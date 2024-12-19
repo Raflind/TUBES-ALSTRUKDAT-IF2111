@@ -19,6 +19,10 @@
 #include "wordl3.h"
 #include "works.h"
 #include "tebakangka.h"
+#include "profile.h"
+#include "map.h"
+#include "stackhistory.h"
+
 
 int main(){
     ListBarang listbarang;
@@ -27,7 +31,13 @@ int main(){
     User user;
     Works work;
     WorksList worklist;
+    Stack stackhistory;
+    Map map;
+    List wishlist;
 
+    CreateList(&wishlist);
+    CreateEmpty(&map);
+    CreateEmptyStack(&stackhistory)
     CreateEmptyWorkList(&worklist);
     LoadWorkList(&worklist);
     CreateListUser(&userlist);
@@ -165,8 +175,52 @@ int main(){
 
                     else if (string_compare(inputmain, "HELP") == 0){
                         help_main();
+                    }   
+                    else if (string_compare(inputmain, "PROFILE") == 0){
+                        Profile(&user);
                     }
+                    else if (IsSameFirstWord(inputmain, "CART")){
+                        char namaBarang[MAX_LEN];
+                        remainderWord(inputmain, "CART");
+                        if (string_compare(inputmain, "ADD")){
+                            remainderWord(inputmain, "ADD");
+                            if (strlent(inputmain)> 0) {
+                                copyFirstWord(inputmain, namaBarang);
+                                int quantity = stringToINt(inputmain);
+                                if (quantity != -1){
+                                    CartAdd(&map, listbarang, namaBarang, quantity);
+                                }
+                            }     
+                        }
+                        else if (string_compare(inputmain, "REMOVE") == 0){
+                            remainderWord(inputmain, "REMOVE");
+                            if (strlent(inputmain)> 0) {
+                                copyFirstWord(inputmain, namaBarang);
+                                int quantity = stringToINt(inputmain);
+                                if (quantity != -1){
+                                    CartRemove(&map, listbarang, namaBarang, quantity);
+                                }
+                            }     
+                        }
+                        else if (string_compare(inputmain, "DISPLAY") == 0){
+                            DisplayCart(&map);     
+                        }
+                        else if (string_compare(inputmain, "PAY") == 0){
+                            CartPay(&ListUser, &user, &map, &stackhistory);
+                        }                               
+                    }
+                    else if (IsSameFirstWord(inputmain, "HISTORY")){
+                        remainderWord(inputmain, "HISTORY");
+                        if (strlent(inputmain) > 0){
+                            int N = stringToINt(inputmain);
+                            if (N != -1){
+                                PrintStackHistory(N);
+                            }
+                        }
 
+                    }
+                    
+                }
 
                     else{
                         printf("Command tidak dikenal. \n");
@@ -175,7 +229,7 @@ int main(){
 
 
 
-                }
+            
             }
             else{
                 printf("Gagal untuk login. \n");
@@ -189,6 +243,7 @@ int main(){
         else{
             printf("Command tidak dikenal. Masukkan HELP jika anda butuh bantuan. \n");
         }
+    
     }
 }
 

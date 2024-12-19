@@ -22,6 +22,7 @@ typedef struct {
     Cart cart[MaxItems];
 } Pembelian;
 
+
 typedef Pembelian infotype;
 typedef int address;
 

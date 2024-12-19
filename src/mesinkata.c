@@ -297,3 +297,56 @@ boolean isThereBlank(char *str) {
     }
     return false;
 }
+
+void remainderWord(char *s1, char *s2){
+    int length = strlent(s1)
+    if (IsSameFirstWord(s1, s2)){
+        int selisih = (strlent(s1) - strlent(s2) - 1);
+        for (int i = 0; i < selisih; i++){
+            s1[i] = s1[(i + length + 1)];
+        }
+        s1[(strlent(s1) - strlent(s2) - 1)] = '\0';
+    }
+    
+}
+
+int copyFirstWord(char *s1, char *s2){
+    int length = strlent(s1);
+    int spaceidx = -1
+    for (int i = 0; i < length; i++){
+        if (s1[i] == ' '){
+            spaceidx = i
+        }
+    }
+    if (spaceidx != -1){
+        for (int j = 0; j < length; j++){
+            if (j < spaceidx){
+                s2[j] = s1[j];
+            }
+            else if ( j > spaceidx){
+                s1[j - spaceidx - 1] = s1[j]; 
+            }
+        }
+        s2[spaceidx] = '\0';
+        s1[length - spaceidx - 1] = '\0';
+    }
+
+    return spaceidx;
+}
+
+int stringToINt(char *s1){
+    int i = 0;
+    int num = 0;
+    while (s1[i] != '\0'){
+        if (s1[i] < '0' || s1[i] > '9'){
+            printf("Input digit angka invalid!\n");
+            return -1;
+        }
+        else{
+            num = num * 10 + (s1[i] - '0');
+        }
+        i++;
+        
+    }
+    return num;
+}
