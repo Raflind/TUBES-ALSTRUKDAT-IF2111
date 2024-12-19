@@ -11,7 +11,7 @@ typedef struct node {
 } Node;
 typedef Address List;
 
-#define IDX_UNDEF (-1)
+#define IDX_UNDEF_LIST (-1)
 #define FIRST(l) (l)
 #define INFO(p) (p)->info
 #define NEXT(p) (p)->next
@@ -23,23 +23,23 @@ void CreateList(List *l);
 /* F.S. Terbentuk list kosong */
 
 /****************** TEST LIST KOSONG ******************/
-boolean isEmpty(List l);
+boolean isEmptyList(List l);
 /* Mengirim true jika list kosong */
 
 /****************** GETTER SETTER ******************/
 ElType getElmt(List l, int idx);
-/* I.S. l terdefinisi, idx indeks yang valid dalam l, yaitu 0..length(l) */
+/* I.S. l terdefinisi, idx indeks yang valid dalam l, yaitu 0..lengthList(l) */
 /* F.S. Mengembalikan nilai elemen l pada indeks idx */
 
 void setElmt(List *l, int idx, ElType val);
-/* I.S. l terdefinisi, idx indeks yang valid dalam l, yaitu 0..length(l) */
+/* I.S. l terdefinisi, idx indeks yang valid dalam l, yaitu 0..lengthList(l) */
 /* F.S. Mengubah elemen l pada indeks ke-idx menjadi val */
 
 int indexOf(List l, ElType val);
 /* I.S. l, val terdefinisi */
 /* F.S. Mencari apakah ada elemen list l yang berisi val */
 /* Jika ada, mengembalikan indeks elemen pertama l yang berisi val */
-/* Mengembalikan IDX_UNDEF jika tidak ditemukan */
+/* Mengembalikan IDX_UNDEF_LIST jika tidak ditemukan */
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
@@ -56,7 +56,7 @@ void insertLast(List *l, ElType val);
 /* bernilai val jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 
 void insertAt(List *l, ElType val, int idx);
-/* I.S. l tidak mungkin kosong, idx indeks yang valid dalam l, yaitu 0..length(l) */
+/* I.S. l tidak mungkin kosong, idx indeks yang valid dalam l, yaitu 0..lengthList(l) */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menyisipkan elemen dalam list pada indeks ke-idx (bukan menimpa elemen di i) */
 /* yang bernilai val jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
@@ -73,12 +73,12 @@ void deleteLast(List *l, ElType *val);
 /*      dan alamat elemen terakhir di-dealokasi */
 
 void deleteAt(List *l, int idx, ElType *val);
-/* I.S. list tidak kosong, idx indeks yang valid dalam l, yaitu 0..length(l) */
+/* I.S. list tidak kosong, idx indeks yang valid dalam l, yaitu 0..lengthList(l) */
 /* F.S. val diset dengan elemen l pada indeks ke-idx. */
 /*      Elemen l pada indeks ke-idx dihapus dari l */
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
-int length(List l);
+int lengthList(List l);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
 /****************** PROSES TERHADAP LIST ******************/

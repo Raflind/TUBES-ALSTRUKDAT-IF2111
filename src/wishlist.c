@@ -47,7 +47,7 @@ void wishlistSwap(List *wishlist, char *word) {
             int idx2 = stringToInt(strIdx2);
             if (idx1 <= lengthList(*wishlist) || idx2 <= lengthList(*wishlist)) {
                 swapIdx(wishlist, idx1 - 1, idx2 - 1);
-                printf("Berhasil menukar posisi %d dengan %d pada wishlist!\n", getElmt(*wishlist, idx1 - 1), getElmt(*wishlist, idx2 - 1));
+                printf("Berhasil menukar posisi %s dengan %s pada wishlist!\n", getElmt(*wishlist, idx1 - 1), getElmt(*wishlist, idx2 - 1));
             }
             else {
                 printf("Gagal menukar posisi dalam wishlist\n");
