@@ -35,7 +35,7 @@ void wishlistAdd(ListBarang store, List *wishlist) {
     }
 }
 
-void wishlistSwap(List *wishlist, char *word) {
+void wishlistSwap(List *wishlist, char *word, int len) {
     remainderWordalter(word, "SWAP");
     char strIdx1[MAX_LEN];
     char strIdx2[MAX_LEN];
@@ -45,7 +45,7 @@ void wishlistSwap(List *wishlist, char *word) {
         if (stringIsNum(strIdx1) && stringIsNum(strIdx2)) {
             int idx1 = stringToInt(strIdx1);
             int idx2 = stringToInt(strIdx2);
-            if (idx1 <= lengthList(*wishlist) || idx2 <= lengthList(*wishlist)) {
+            if (idx1 <= len || idx2 <= len) {
                 swapIdx(wishlist, idx1 - 1, idx2 - 1);
                 printf("Berhasil menukar posisi %s dengan %s pada wishlist!\n", getElmt(*wishlist, idx1 - 1), getElmt(*wishlist, idx2 - 1));
             }

@@ -10,7 +10,7 @@
 void wishlistAdd(ListBarang store, List *wishlist);
 /* Menambah barang pada wishlist, bila kosong maka akan insertFirst, bila tidak akan insertLast */
 
-void wishlistSwap(List *wishlist, char *word);
+void wishlistSwap(List *wishlist, char *word, int len);
 /* Menukar urutan barang pada wishlist */
 
 void wishlistRemoveName(List *wishlist);
