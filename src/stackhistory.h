@@ -8,7 +8,6 @@
 #define Nils -1
 #define MaxEl 100
 #define MaxItems 10
-#define NamaMax MAX_LEN
 
 typedef struct {
     int id;

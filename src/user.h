@@ -7,7 +7,7 @@
 #include "map.h"
 #include "wishlist.h"
 
-#define MAX_USERS 100
+#define MAX_USERS 10
 #define MAX_LEN 100
 
 typedef struct {

@@ -25,7 +25,6 @@
 
 
 int main(){
-    printf("bruh");
     ListBarang listbarang;
     Queue queue;
     Works work;
