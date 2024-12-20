@@ -155,6 +155,7 @@ int main(){
 
                     else if (IsSameFirstWord(inputmain, "SAVE")){
                         remainderWord(inputmain, "SAVE");
+                        printf("%s %d\n", inputmain, strlent(inputmain));
                         if (strlent(inputmain) > 0 && string_compare(inputmain, "SAVE") != 0){
                             
                             save(&userlist, &listbarang, inputmain);
@@ -179,17 +180,18 @@ int main(){
                     else if (IsSameFirstWord(inputmain, "CART")){
                         char namaBarang[MAX_LEN];
                         remainderWord(inputmain, "CART");
-                        if (string_compare(inputmain, "ADD")){
+                        printf("%s\n", inputmain);
+                        if (IsSameFirstWord(inputmain, "ADD")){
                             remainderWord(inputmain, "ADD");
                             if (strlent(inputmain)> 0) {
                                 copyFirstWord(inputmain, namaBarang);
                                 int quantity = stringToINt(inputmain);
                                 if (quantity != -1){
-                                    CartAdd(map, listbarang, namaBarang, quantity);
+                                    CartAdd(&map, listbarang, namaBarang, quantity);
                                 }
                             }     
                         }
-                        else if (string_compare(inputmain, "REMOVE") == 0){
+                        else if (IsSameFirstWord(inputmain, "REMOVE")){
                             remainderWord(inputmain, "REMOVE");
                             if (strlent(inputmain)> 0) {
                                 copyFirstWord(inputmain, namaBarang);
@@ -199,11 +201,11 @@ int main(){
                                 }
                             }     
                         }
-                        else if (string_compare(inputmain, "DISPLAY") == 0){
+                        else if (string_compare(inputmain, "SHOW") == 0){
                             DisplayCart(map);     
                         }
                         else if (string_compare(inputmain, "PAY") == 0){
-                            CartPay(&userlist, &user, &map, &stackhistory);
+                            CartPay(&userlist, &user, &map);
                         }                               
                     }
                     else if (IsSameFirstWord(inputmain, "HISTORY")){
@@ -211,7 +213,7 @@ int main(){
                         if (strlent(inputmain) > 0){
                             int N = stringToINt(inputmain);
                             if (N != -1){
-                                PrintStackHistory(stackhistory, N);
+                                PrintStackHistory(user.riwayat_pembelian, N);
                             }
                         }
 

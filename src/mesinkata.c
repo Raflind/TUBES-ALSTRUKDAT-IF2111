@@ -288,7 +288,7 @@ boolean isThereBlank(char *str) {
 }
 
 void remainderWord(char *s1, char *s2){
-    int length = strlent(s1);
+    int length = strlent(s2);
     if (IsSameFirstWord(s1, s2)){
         int selisih = (strlent(s1) - strlent(s2) - 1);
         for (int i = 0; i < selisih; i++){

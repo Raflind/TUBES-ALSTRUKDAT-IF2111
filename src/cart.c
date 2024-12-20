@@ -5,13 +5,13 @@
 #include "mesinkata.h"
 
 
-void CartAdd(Map M, ListBarang list, char *name, int quantity){
+void CartAdd(Map *M, ListBarang list, char *name, int quantity){
     if(FindBarangByName(list, name) == -1){
         printf("Barang tidak ada di toko!\n");
     }
     else{
         int idx = FindBarangByName(list, name);
-        Insert(&M, list.buffer[idx], quantity);
+        Insert(M, list.buffer[idx], quantity);
         printf("Berhasil menambahkan %d %s ke keranjang belanja!\n", quantity, name);
     }
 }
@@ -50,6 +50,7 @@ void DisplayCart(Map M){
     int i = 0;
     while(i < M.Count){
         printf("%10d %14s %7d", M.Elements[i].Kuantitas, M.Elements[i].Barang.name, M.Elements[i].total);
+        i++;
     }
 }
 

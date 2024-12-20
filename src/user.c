@@ -38,7 +38,7 @@ int FindUser(ListUser *list, char *username) {
     return -1;
 }
 
-void CartPay(ListUser *list, User *user, Map *M, Stack *stackhistory){
+void CartPay(ListUser *list, User *user, Map *M){
     printf("Berikut adalah isi keranjangmu!\n");
     printf("Kuantitas  ");
     printf("Nama           ");
@@ -46,23 +46,28 @@ void CartPay(ListUser *list, User *user, Map *M, Stack *stackhistory){
     int i = 0;
     while(i < M->Count){
         printf("%10d %14s %7d", M->Elements[i].Kuantitas, M->Elements[i].Barang.name, M->Elements[i].total);
+        i++;
     }
     i = 0;
     int total = 0;
     while(i < M->Count){
         total += M->Elements[i].total;
+        i++;
     }
     printf("Total biaya yang harus dikeluarkan adalah %d, apakah jadi dibeli? (Ya/Tidak)", total);
     char validate[10];
-    while(validate != "Ya" || validate != "Tidak"){
+    while(1){
         START();
         StartWord();
         CopyWordToString(validate);
-        if(strlent(validate) != 1){
+        if(string_compare(validate, "Ya") == 0 || string_compare(validate, "Tidak") == 0 ){
+            break;
+        }
+        else{
             printf("Masukkan Input yang benar.");
         }
     }
-    if(validate == "Ya"){
+    if(string_compare(validate, "Ya") == 0){
         int idx = FindUser(list, user->name);
         if(list->buffer[idx].money < total){
             printf("Uang kamu hanya %d, tidak cukup untuk membeli barang di keranjang\n", user->money);
@@ -70,7 +75,7 @@ void CartPay(ListUser *list, User *user, Map *M, Stack *stackhistory){
         else{
             printf("Selamat kamu telah membeli barang-barang tersebut!");
             list->buffer[idx].money -= total;
-            AddtoPembelian(M, stackhistory);
+            AddtoPembelian(M, &user->riwayat_pembelian);
         }
     }
 

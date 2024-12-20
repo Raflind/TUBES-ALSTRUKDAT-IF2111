@@ -29,6 +29,6 @@ void CreateListUser(ListUser *list);
 boolean IsUserExist(ListUser *list, char *username);
 void AddUser(ListUser *list, User newUser);
 int FindUser(ListUser *list, char *username);
-void CartPay(ListUser *list, User *user, Map *M, Stack *stackhistory);
+void CartPay(ListUser *list, User *user, Map *M);
 
 #endif
