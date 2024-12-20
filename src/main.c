@@ -28,14 +28,13 @@ int main(){
     printf("bruh");
     ListBarang listbarang;
     Queue queue;
-    ListUser userlist;
-    User user;
     Works work;
     WorksList worklist;
     Stack stackhistory;
     Map map;
     List wishlist;
-
+    User user;
+    ListUser userlist;
     CreateList(&wishlist);
     CreateEmpty(&map);
     CreateEmptyStack(&stackhistory);
@@ -45,8 +44,6 @@ int main(){
     user.name[0] = '\0';
     InitializeListBarang(&listbarang);
     CreateQueue(&queue);
-
-    
     printf("Selamat Datang di PURRMART, silahkan masukkan command (START, LOAD, HELP): \n");
     START();
 
