@@ -52,7 +52,7 @@ void CartPay(ListUser *list, User *user, Map *M, Stack *stackhistory){
     while(i < M->Count){
         total += M->Elements[i].total;
     }
-    printf("Total biaya yang harus dikeluarkan adalah %d, apakah jadi dibeli? (Ya/Tidak)");
+    printf("Total biaya yang harus dikeluarkan adalah %d, apakah jadi dibeli? (Ya/Tidak)", total);
     char validate[10];
     while(validate != "Ya" || validate != "Tidak"){
         START();

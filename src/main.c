@@ -25,7 +25,7 @@
 
 
 int main(){
-    printf("konto");
+    printf("bruh");
     ListBarang listbarang;
     Queue queue;
     ListUser userlist;

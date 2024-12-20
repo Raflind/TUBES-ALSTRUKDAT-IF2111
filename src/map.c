@@ -80,10 +80,10 @@ void Delete(Map *M, Barang barang, int quantity){
                 M->Elements[i] = M->Elements[i+1];
                 i++;
             }
-            printf("Berhasil mengurangi %d %s dari keranjang belanja!", M->Elements[idx], M->Elements[idx].Barang.name);
+            printf("Berhasil mengurangi %d %s dari keranjang belanja!", quantity, M->Elements[idx].Barang.name);
         }
         else{
-            printf("Berhasil mengurangi %d %s dari keranjang belanja!", M->Elements[idx], M->Elements[idx].Barang.name);
+            printf("Berhasil mengurangi %d %s dari keranjang belanja!", quantity, M->Elements[idx].Barang.name);
             M->Elements[GetAddress(*M, barang)].Kuantitas -= quantity;
         }
     }
