@@ -2,11 +2,11 @@
 #include <stdio.h>
 
 void CreateEmptyStack(Stack *S){
-    Top(*S) = Nil;
+    Top(*S) = Nils;
 }
 
 boolean IsStackEmpty(Stack S){
-    return (Top(S) == Nil);
+    return (Top(S) == Nils);
 }
 
 boolean IsStackFull(Stack S){
@@ -48,8 +48,19 @@ void PrintStackHistory(Stack S, int N){
         printf("Kuantitas\tNama\tTotal\n");
         for(int j = 0; j < p.jumlah_barang; j++) {
             Cart cart = p.cart[j];
-            printf("%d\t\t%s\t%d\n", cart.jumlah_dibeli, cart.barang.name, cart.total);
+            printf("%d\t\t%s\t%d\n", cart.Kuantitas, cart.Barang.name, cart.total);
         }
         printf("\n");
     }
+}
+
+void AddtoPembelian(Map *M, Stack *stackhistory){
+    Pembelian purchase;
+    for(int i = 0; i < M->Count;i++){
+        purchase.cart[i] = M->Elements[i];
+    }
+    purchase.jumlah_barang += M->Count;
+    purchase.total += TotalHarga(*M);
+    purchase.id = stackhistory->TOP + 1;
+    Push(stackhistory, purchase);
 }

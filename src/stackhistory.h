@@ -3,17 +3,12 @@
 
 #include "boolean.h"
 #include "barang.h"
+#include "cart.h"
 
-#define Nil -1
+#define Nils -1
 #define MaxEl 100
 #define MaxItems 10
 #define NamaMax MAX_LEN
-
-typedef struct {
-    Barang barang;
-    int jumlah_dibeli;
-    int total;
-} Cart;
 
 typedef struct {
     int id;
@@ -64,5 +59,7 @@ void Pop(Stack * S, infotype* X);
 void PrintStackHistory(Stack S, int N);
 // Menampilkan riwayat pembelian sebanyak N, dimulai dari pembelian terbaru (top element)
 // Stack mungkin kosong, N mungkin lebih banyak dari neff stack
+
+void AddtoPembelian(Map *M, Stack *stackhistory);
 
 #endif

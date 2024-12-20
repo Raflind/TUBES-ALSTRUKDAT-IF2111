@@ -24,7 +24,7 @@ void Profile(User *user) {
     }
 
     printf("\nWishlist:\n");
-    if (isEmpty(&user->wishlist)) {
+    if (isEmptyList(user->wishlist)) {
         printf("Wishlist kosong.\n");
     } else {
         wishlistShow(user->wishlist);

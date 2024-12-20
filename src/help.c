@@ -26,7 +26,7 @@ void help_main(){
     printf("SAVE -> Untuk menyimpan state ke dalam file\n");
     printf("QUIT -> Untuk keluar dari program\n");
     printf("PROFILE -> Untuk melihat data diri user\n");
-    prtinf("HISTORY <n> -> Menampilkan riwayat <n> pembelian terbaru\n");
+    printf("HISTORY <n> -> Menampilkan riwayat <n> pembelian terbaru\n");
     printf("CART ADD <nama> <n> -> Menambahkan barang sebanyak <n>\n");
     printf("CART REMOVE <name> <n> -> Menghapus barang sebanyak <n>\n");
     printf("CART SHOW -> Menampilkan semua barang dalam CART\n");

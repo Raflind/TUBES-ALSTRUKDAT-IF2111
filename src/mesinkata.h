@@ -102,4 +102,10 @@ boolean isValidForSplit(char *input);
 boolean isThereBlank(char *str);
 /* Mengecek apakah ada blank pada string */
 
+void remainderWord(char *s1, char *s2);
+
+int copyFirstWord(char *s1, char *s2);
+
+int stringToINt(char *s1);
+
 #endif

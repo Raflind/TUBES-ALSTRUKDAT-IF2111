@@ -8,7 +8,7 @@
 #include "mesinkarakter.h"
 #include "mesinkata.h"
 #include "boolean.h"
-#include "ADT/user.h"
+#include "user.h"
 #include <time.h>
 
 typedef struct{

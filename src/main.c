@@ -14,7 +14,7 @@
 #include "quit.h"
 #include "register.h"
 #include "save.h"
-#include "start.h"
+#include "newstart.h"
 #include "user.h"
 #include "wordl3.h"
 #include "works.h"
@@ -25,6 +25,7 @@
 
 
 int main(){
+    printf("konto");
     ListBarang listbarang;
     Queue queue;
     ListUser userlist;
@@ -37,7 +38,7 @@ int main(){
 
     CreateList(&wishlist);
     CreateEmpty(&map);
-    CreateEmptyStack(&stackhistory)
+    CreateEmptyStack(&stackhistory);
     CreateEmptyWorkList(&worklist);
     LoadWorkList(&worklist);
     CreateListUser(&userlist);
@@ -55,7 +56,7 @@ int main(){
         StartWords();
         CopyWordToString(input);
         if (string_compare(input, "START") == 0){
-            if (Startr(&userlist, &listbarang) == 2){
+            if (NewStartr(&userlist, &listbarang, &stackhistory) == 2){
                 started = 0;
             }
         }
@@ -188,7 +189,7 @@ int main(){
                                 copyFirstWord(inputmain, namaBarang);
                                 int quantity = stringToINt(inputmain);
                                 if (quantity != -1){
-                                    CartAdd(&map, listbarang, namaBarang, quantity);
+                                    CartAdd(map, listbarang, namaBarang, quantity);
                                 }
                             }     
                         }
@@ -203,10 +204,10 @@ int main(){
                             }     
                         }
                         else if (string_compare(inputmain, "DISPLAY") == 0){
-                            DisplayCart(&map);     
+                            DisplayCart(map);     
                         }
                         else if (string_compare(inputmain, "PAY") == 0){
-                            CartPay(&ListUser, &user, &map, &stackhistory);
+                            CartPay(&userlist, &user, &map, &stackhistory);
                         }                               
                     }
                     else if (IsSameFirstWord(inputmain, "HISTORY")){
@@ -214,7 +215,7 @@ int main(){
                         if (strlent(inputmain) > 0){
                             int N = stringToINt(inputmain);
                             if (N != -1){
-                                PrintStackHistory(N);
+                                PrintStackHistory(stackhistory, N);
                             }
                         }
 
@@ -222,7 +223,7 @@ int main(){
                     
                 }
 
-                    else{
+                    }else{
                         printf("Command tidak dikenal. \n");
                     }
 
@@ -235,15 +236,13 @@ int main(){
                 printf("Gagal untuk login. \n");
             }
         }
-
-        else if (string_compare(input, "HELP") == 0){
+        if (string_compare(input, "HELP") == 0){
             help_login();
         }
-
         else{
             printf("Command tidak dikenal. Masukkan HELP jika anda butuh bantuan. \n");
         }
     
-    }
+    return 0;
 }
 

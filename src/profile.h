@@ -3,9 +3,9 @@
 
 #include "user.h"
 #include "map.h"
-#include "stack.h"
+#include "stackhistory.h"
 #include "linkedlist.h"
 
-void PROFILE(User *user);
+void Profile(User *user);
 
 #endif

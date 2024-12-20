@@ -2,7 +2,7 @@
 #include "mesinkata.h"
 #include "tebakangka.h"
 #include "boolean.h"
-#include "ADT/user.h"
+#include "user.h"
 #include <time.h>
 /*
 void AddAnswer(AnswerTebakAngka *Ans, int x){

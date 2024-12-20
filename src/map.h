@@ -60,7 +60,7 @@ void Insert(Map *M, Barang k, int v);
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 
-void Delete(Map *M, Barang k);
+void Delete(Map *M, Barang k, int quantity);
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
         element dengan key k mungkin anggota / bukan anggota dari M */
@@ -68,5 +68,9 @@ void Delete(Map *M, Barang k);
 
 boolean IsMember(Map M, Barang k);
 /* Mengembalikan true jika k adalah member dari M */
+
+int GetAddress(Map M, Barang barang);
+
+int Quantity(Map M, Barang barang);
 
 #endif

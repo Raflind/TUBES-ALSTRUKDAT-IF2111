@@ -4,6 +4,7 @@
 #include "boolean.h"
 #include "cart.h"
 #include "stackhistory.h"
+#include "map.h"
 #include "wishlist.h"
 
 #define MAX_USERS 100
@@ -15,7 +16,7 @@ typedef struct {
     int money;
     Map keranjang;
     Stack riwayat_pembelian;
-    LinkedList wishlist;
+    List wishlist;
 } User;
 
 typedef struct {
@@ -28,5 +29,6 @@ void CreateListUser(ListUser *list);
 boolean IsUserExist(ListUser *list, char *username);
 void AddUser(ListUser *list, User newUser);
 int FindUser(ListUser *list, char *username);
+void CartPay(ListUser *list, User *user, Map *M, Stack *stackhistory);
 
 #endif
