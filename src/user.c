@@ -3,6 +3,9 @@
 
 void CreateListUser(ListUser *list) {
     list->nEff = 0;
+    for (int i = 0; i < MAX_USERS; i++) {
+        CreateEmptyStack(&list->buffer[i].riwayat_pembelian);
+    }
 }
 
 boolean IsUserExist(ListUser *list, char *username) {
