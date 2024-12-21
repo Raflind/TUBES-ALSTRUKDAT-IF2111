@@ -53,7 +53,7 @@ int main(){
         StartWords();
         CopyWordToString(input);
         if (string_compare(input, "START") == 0){
-            if (NewStartr(&userlist, &listbarang, &stackhistory) == 2){
+            if (NewStartr(&userlist, &listbarang) == 2){
                 started = 0;
             }
         }

@@ -3,6 +3,6 @@
 #include "user.h"
 #include "listbarang.h"
 
-int NewStartr(ListUser *listuser, ListBarang *listbarang, Stack *stackhistory);
+int NewStartr(ListUser *listuser, ListBarang *listbarang);
 
 #endif

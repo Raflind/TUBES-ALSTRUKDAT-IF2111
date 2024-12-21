@@ -5,7 +5,7 @@
 #include "mesinkata.h"
 #include "mesinkarakter.h"
 
-int NewStartr(ListUser *listuser, ListBarang *listbarang, Stack *stackhistory){
+int NewStartr(ListUser *listuser, ListBarang *listbarang){
  char filepath[200];
  snprintf(filepath, sizeof(filepath), "../saves/file_konfig.txt");
  StartFile(filepath);
@@ -71,25 +71,19 @@ int NewStartr(ListUser *listuser, ListBarang *listbarang, Stack *stackhistory){
   for (int j=0;j<tempa;j++){
     rando.password[j] = currentWord.contents[j];
   }
-  AddUser(listuser, rando);
   //printf("%d ", rando.money);
-  for(int j=0;j<tempu;j++){
-   //printf("%c", rando.name[j]);
-   rando.name[j] = '\0';
-  }
-  //printf(" ");
-  for(int j=0;j<tempa;j++){
-   //printf("%c", rando.password[j]);
-   rando.password[j] = '\0';
-  }
   //printf("\n");
   IgnoreBlanks();
   CopyWord();
   int x = WordToInt(currentWord);
   int totpric;
   int totitem;
+  CreateEmptyStack(&rando.riwayat_pembelian);
+  /*printf("\n ************* \n");
+  PrintStackHistory(rando.riwayat_pembelian, 3);
+  printf("\n ************* \n");*/
+  infotype pb;
   for(int j=1;j<=x;j++){
-    Pembelian pb;
     pb.id = j;
     IgnoreBlanks();
     StartWord();
@@ -113,15 +107,45 @@ int NewStartr(ListUser *listuser, ListBarang *listbarang, Stack *stackhistory){
       IgnoreBlanks();
       StartWords();
       int bruh = currentWord.length;
-      for (int l=0;l<bruh;l++){
+      for(int l=0;l<bruh;l++){
         pb.cart[k].Barang.name[l] = currentWord.contents[l];
       }
       pb.cart[k].Barang.price = (itemprice/itemquant);
     }
-    Push(stackhistory, pb);
+    Push(&rando.riwayat_pembelian, pb);
+  }
+  PrintStackHistory(rando.riwayat_pembelian, 6);
+  IgnoreBlanks();
+  CopyWord();
+  x = WordToInt(currentWord);
+  CreateList(&rando.wishlist);
+  for(int j=1;j<=x;j++){
+   IgnoreBlanks();
+   StartWords();
+   char wishitem[MAX_LEN];
+   CopyWordToString(wishitem);
+   //insertLast(&rando.wishlist, wishitem);
+   if(j==1){
+    insertFirst(&rando.wishlist, wishitem);
+   }
+   else{
+    insertLast(&rando.wishlist, wishitem);
+   }
+  }
+  //printList(rando.wishlist);
+  AddUser(listuser, rando);
+  clearList(&rando.wishlist);
+  for(int j=0;j<tempu;j++){
+   //printf("%c", rando.name[j]);
+   rando.name[j] = '\0';
+  }
+  //printf(" ");
+  for(int j=0;j<tempa;j++){
+   //printf("%c", rando.password[j]);
+   rando.password[j] = '\0';
   }
  }
- CloseFile(); 
+ CloseFile();
  printf("PURRMART berhasil di-start\n");
  return 2;
 }
