@@ -79,9 +79,9 @@ void CartPay(ListUser *list, User *user, Map *M){
             printf("Selamat kamu telah membeli barang-barang tersebut!\n");
             list->buffer[idx].money -= total;
             user->money -= total;
+            AddtoPembelian(M, &user->riwayat_pembelian);
             CreateEmpty(&user->keranjang);
             CreateEmpty(M);
-            AddtoPembelian(M, &user->riwayat_pembelian);
         }
     }
 
