@@ -107,14 +107,18 @@ int NewStartr(ListUser *listuser, ListBarang *listbarang){
       IgnoreBlanks();
       StartWords();
       int bruh = currentWord.length;
-      for(int l=0;l<bruh;l++){
-        pb.cart[k].Barang.name[l] = currentWord.contents[l];
-      }
+      char barangname[MAX_LEN];
+      CopyWordToString(barangname);
+      string_copy(pb.cart[k].Barang.name, barangname);
+      /*for(int l=0;l<bruh;l++){
+        if(j==3){
+          printf("%c [yea] ", currentWord.contents[l]);
+        }
+      }*/
       pb.cart[k].Barang.price = (itemprice/itemquant);
     }
     Push(&rando.riwayat_pembelian, pb);
   }
-  PrintStackHistory(rando.riwayat_pembelian, 6);
   IgnoreBlanks();
   CopyWord();
   x = WordToInt(currentWord);
