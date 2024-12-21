@@ -2,7 +2,6 @@
 #define USER_H
 
 #include "boolean.h"
-#include "cart.h"
 #include "stackhistory.h"
 #include "map.h"
 #include "wishlist.h"
@@ -30,5 +29,7 @@ boolean IsUserExist(ListUser *list, char *username);
 void AddUser(ListUser *list, User newUser);
 int FindUser(ListUser *list, char *username);
 void CartPay(ListUser *list, User *user, Map *M);
+void DisplayCart(Map M);
+void AddCartToUser(Map M, User *user);
 
 #endif

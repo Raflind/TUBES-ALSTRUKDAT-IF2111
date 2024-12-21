@@ -1,9 +1,8 @@
 #include "map.h"
-#include "stdio.h"
+#include <stdio.h>
 #include "listbarang.h"
-#include "user.h"
 #include "mesinkata.h"
-
+#include "cart.h"
 
 void CartAdd(Map *M, ListBarang list, char *name, int quantity){
     if(FindBarangByName(list, name) == -1){
@@ -25,11 +24,7 @@ void CartRemove(Map *M, ListBarang list, char *name, int quantity){
             printf("Tidak berhasil mengurangi, hanya terdapat %d %s pada keranjang!\n", M->Elements[idx].Kuantitas, M->Elements[idx].Barang.name);
         }
         else if(Quantity(*M, barang) == quantity){
-            int i = idx;
-            while(i < M->Count){
-                M->Elements[i] = M->Elements[i+1];
-                i++;
-            }
+            Delete(M, barang);
             printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", quantity, M->Elements[idx].Barang.name);
         }
         else{
@@ -40,23 +35,6 @@ void CartRemove(Map *M, ListBarang list, char *name, int quantity){
     }
     else{
         printf("Barang tidak ada di keranjang belanja!\n");
-    }
-}
-
-void DisplayCart(Map M){
-    if(IsEmpty(M)){
-        printf("Tidak ada Barang apapun di Keranjang.\n");
-    }
-    else{
-        printf("Berikut adalah isi keranjangmu!\n");
-        printf("Kuantitas  ");
-        printf("Nama           ");
-        printf("Total  \n");
-        int i = 0;
-        while(i < M.Count){
-            printf("%-10d %-14s %d\n", M.Elements[i].Kuantitas, M.Elements[i].Barang.name, M.Elements[i].total);
-            i++;
-        }
     }
 }
 

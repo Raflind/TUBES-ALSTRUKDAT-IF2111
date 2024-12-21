@@ -69,27 +69,16 @@ void Insert(Map *M, Barang barang, int kuantitas){
     }
 }
 
-void Delete(Map *M, Barang barang, int quantity){
+void Delete(Map *M, Barang barang){
     if(IsMember(*M, barang)){
-        int idx = GetAddress(*M, barang);
-        if(Quantity(*M, barang) < quantity){
-            printf("Tidak berhasil mengurangi, hanya terdapat %d %s pada keranjang!\n", M->Elements[idx].Kuantitas, M->Elements[idx].Barang.name);
-        }
-        else if(Quantity(*M, barang) == quantity){
-            int i = idx;
-            while(i < M->Count){
-                M->Elements[i] = M->Elements[i+1];
-                i++;
-            }
-            printf("Berhasil mengurangi %d %s dari keranjang belanja!", quantity, M->Elements[idx].Barang.name);
-        }
-        else{
-            printf("Berhasil mengurangi %d %s dari keranjang belanja!", quantity, M->Elements[idx].Barang.name);
-            M->Elements[GetAddress(*M, barang)].Kuantitas -= quantity;
-        }
+        int i = GetAddress(*M, barang);
+        while(i < (*M).Count){
+            M->Elements[i].Barang = M->Elements[i+1].Barang;
+            M->Elements[i].total = M->Elements[i+1].total;
+            M->Elements[i].Kuantitas = M->Elements[i+1].Kuantitas;
+            i++;
     }
-    else{
-        printf("Barang tidak ada di keranjang belanja!\n");
+    M->Count--;
     }
 }
 

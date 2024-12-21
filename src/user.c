@@ -45,7 +45,7 @@ void CartPay(ListUser *list, User *user, Map *M){
     printf("Berikut adalah isi keranjangmu!\n");
     printf("Kuantitas  ");
     printf("Nama           ");
-    printf("Total  ");
+    printf("Total  \n");
     int i = 0;
     while(i < M->Count){
         printf("%-10d %-14s %d\n", M->Elements[i].Kuantitas, M->Elements[i].Barang.name, M->Elements[i].total);
@@ -72,7 +72,6 @@ void CartPay(ListUser *list, User *user, Map *M){
     }
     if(string_compare(validate, "Ya") == 0){
         int idx = FindUser(list, user->name);
-        printf("%d\n", idx);
         if(list->buffer[idx].money < total){
             printf("Uang kamu hanya %d, tidak cukup untuk membeli barang di keranjang\n", user->money);
         }
@@ -80,8 +79,31 @@ void CartPay(ListUser *list, User *user, Map *M){
             printf("Selamat kamu telah membeli barang-barang tersebut!\n");
             list->buffer[idx].money -= total;
             user->money -= total;
+            CreateEmpty(&user->keranjang);
+            CreateEmpty(M);
             AddtoPembelian(M, &user->riwayat_pembelian);
         }
     }
 
+}
+
+void DisplayCart(Map M){
+    if(IsEmpty(M)){
+        printf("Tidak ada Barang apapun di Keranjang.\n");
+    }
+    else{
+        printf("Berikut adalah isi keranjangmu!\n");
+        printf("Kuantitas  ");
+        printf("Nama           ");
+        printf("Total  \n");
+        int i = 0;
+        while(i < M.Count){
+            printf("%-10d %-14s %d\n", M.Elements[i].Kuantitas, M.Elements[i].Barang.name, M.Elements[i].total);
+            i++;
+        }
+    }
+}
+
+void AddCartToUser(Map M, User *user){
+    user->keranjang = M;
 }

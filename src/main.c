@@ -188,10 +188,9 @@ int main(){
                             printf("%s\n", inputmain);
                             if (strlent(inputmain)> 0) {
                                 int quantity = splitStringInt(inputmain, namaBarang);
-                                printf("%s\n", inputmain);
-                                printf("%s\n", namaBarang);
                                 if (quantity != -1){
                                     CartAdd(&map, listbarang, namaBarang, quantity);
+                                    AddCartToUser(map, &user);
                                 }
                             }     
                         }
@@ -202,6 +201,7 @@ int main(){
                                 int quantity = stringToINt(inputmain);
                                 if (quantity != -1){
                                     CartRemove(&map, listbarang, namaBarang, quantity);
+                                    AddCartToUser(map, &user);
                                 }
                             }     
                         }
@@ -210,6 +210,7 @@ int main(){
                         }
                         else if (string_compare(inputmain, "PAY") == 0){
                             CartPay(&userlist, &user, &map);
+                            
                         }                               
                     }
                     else if (IsSameFirstWord(inputmain, "HISTORY")){
