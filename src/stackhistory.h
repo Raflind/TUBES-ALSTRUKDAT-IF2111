@@ -23,10 +23,14 @@ typedef struct stacknode {
     address next;
 } stacknode;
 
-typedef struct {
+typedef struct { // ieu kummaha carana dapet panjang stack na >:(
     address TOP;
 } Stack;
 
+typedef struct {
+    int length;
+    char** historyStrings;
+} StackInfo;
 
 void CreateEmptyStack(Stack *S);
 boolean IsStackEmpty(Stack S);
@@ -35,5 +39,6 @@ void Push(Stack *S, infotype X);
 void Pop(Stack *S, infotype *X);
 void PrintStackHistory(Stack S, int N);
 void AddtoPembelian(Map *M, Stack *stackhistory);
+void writeHistory(FILE *pita, Stack *S);
 
 #endif

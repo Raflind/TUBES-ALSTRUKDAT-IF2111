@@ -158,7 +158,7 @@ int main(){
                     else if (IsSameFirstWord(inputmain, "SAVE")){
                         remainderWord(inputmain, "SAVE");
                         printf("%s %d\n", inputmain, strlent(inputmain));
-                        if (strlent(inputmain) > 0 && string_compare(inputmain, "SAVE") != 0){
+                        if (strlent(inputmain) > 0 && string_compare(inputmain, "SAVE") == 0){
                             
                             save(&userlist, &listbarang, inputmain);
                         }
