@@ -95,7 +95,7 @@ int NewStartr(ListUser *listuser, ListBarang *listbarang){
     pb.total = totpric;
     int itemprice;
     int itemquant;
-    for(int k=1;k<=totitem;k++){
+    for(int k=0;k<totitem;k++){
       IgnoreBlanks();
       StartWord();
       itemprice = WordToInt(currentWord);
