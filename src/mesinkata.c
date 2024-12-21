@@ -339,3 +339,42 @@ int stringToINt(char *s1){
     }
     return num;
 }
+
+int splitStringInt(char *s1, char *s2) {
+    int i = 0;
+    int lastSpaceidx = -1;
+    int num;
+
+    while (s1[i] != '\0'){
+        if (s1[i] == ' '){
+            lastSpaceidx = i;
+        }
+        i++;
+    }
+    
+    if (lastSpaceidx == -1){
+        printf("Tidak ada spasi di dalam string!\n");
+        return -1;
+    }
+
+    char numToSplit[MAX_WORD_LENGTH];
+    int k = 0;
+    for (int j = lastSpaceidx + 1; j < i; j++){
+        numToSplit[k++] = s1[j];
+    }
+    numToSplit[k] = '\0';
+
+    if (stringIsNum(numToSplit)){
+        num = stringToInt(numToSplit);
+        for (int j = 0; j < lastSpaceidx; j++){
+            s2[j] = s1[j];
+        }
+        s2[lastSpaceidx] = '\0';
+    } 
+    else{
+        printf("Input digit angka invalid!\n");
+        num = -1;
+    }
+
+    return num;
+}

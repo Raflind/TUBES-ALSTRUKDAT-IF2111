@@ -108,4 +108,5 @@ int copyFirstWord(char *s1, char *s2);
 
 int stringToINt(char *s1);
 
+int splitStringInt(char *s1, char *s2);
 #endif
