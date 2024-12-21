@@ -31,5 +31,6 @@ int FindUser(ListUser *list, char *username);
 void CartPay(ListUser *list, User *user, Map *M);
 void DisplayCart(Map M);
 void AddCartToUser(Map M, User *user);
+void AddWishlistToUser(List wishlist, User *user);
 
 #endif

@@ -35,7 +35,9 @@ void wishlistAdd(ListBarang store, List *wishlist) {
     }
 }
 
-void wishlistSwap(List *wishlist, char *word, int len) {
+void wishlistSwap(List *wishlist, char *word) {
+    int len;
+    len = lengthList(*wishlist);
     remainderWordalter(word, "SWAP");
     char strIdx1[MAX_LEN];
     char strIdx2[MAX_LEN];

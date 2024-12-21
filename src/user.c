@@ -107,3 +107,7 @@ void DisplayCart(Map M){
 void AddCartToUser(Map M, User *user){
     user->keranjang = M;
 }
+
+void AddWishlistToUser(List wishlist, User *user){
+    user->wishlist = wishlist;
+}

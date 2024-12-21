@@ -74,6 +74,7 @@ int main(){
     while(logged){
         START();
         StartWords();
+
         CopyWordToString(input);
 
         if (string_compare(input, "REGISTER") == 0){
@@ -85,6 +86,7 @@ int main(){
                 int menu = 1;
                 help_main();
                 CreateEmptyStack(&user.riwayat_pembelian);
+                CreateEmpty(&user.keranjang);
                 while (menu){
                     printf("Silahkan masukkan command: ");
                     START();
@@ -227,24 +229,29 @@ int main(){
                         remainderWordalter(inputmain, "WISHLIST");
                         if (IsSameFirstWord(inputmain, "ADD")) {
                             wishlistAdd(listbarang, &wishlist);
+                            AddWishlistToUser(wishlist, &user);
                         }
 
                         else if (IsSameFirstWord(inputmain, "SWAP")) {
-                            //wishlistSwap(&wishlist, inputmain);
-                            // pending dulu masih bingung implementasinya -sakil
+                            wishlistSwap(&wishlist, inputmain);
+                            AddWishlistToUser(wishlist, &user);
+                            
                         }
 
                         else if (IsSameFirstWord(inputmain, "REMOVE")) {
                             if (isThereBlank(inputmain)) {
                                 wishlistRemoveIdx(&wishlist, inputmain);
+                                AddWishlistToUser(wishlist, &user);
                             }
                             else{
                                 wishlistRemoveName(&wishlist);
+                                AddWishlistToUser(wishlist, &user);
                             }
                         }
 
                         else if (IsSameFirstWord(inputmain,"CLEAR")) {
                             wishlistClear(&wishlist);
+                            AddWishlistToUser(wishlist, &user);
                         }
 
                         else if (IsSameFirstWord(inputmain, "SHOW")) {
