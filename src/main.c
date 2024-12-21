@@ -37,6 +37,7 @@ int main(){
     CreateList(&wishlist);
     CreateEmpty(&map);
     CreateEmptyStack(&stackhistory);
+    CreateEmptyStack(&user.riwayat_pembelian);
     CreateEmptyWorkList(&worklist);
     LoadWorkList(&worklist);
     CreateListUser(&userlist);
@@ -83,6 +84,7 @@ int main(){
             if (LoginUser(&userlist, &user) == 1){
                 int menu = 1;
                 help_main();
+                CreateEmptyStack(&user.riwayat_pembelian);
                 while (menu){
                     printf("Silahkan masukkan command: ");
                     START();
@@ -178,14 +180,16 @@ int main(){
                         Profile(&user);
                     }
                     else if (IsSameFirstWord(inputmain, "CART")){
-                        char namaBarang[MAX_LEN];
+                        char namaBarang[MAX_WORD_LENGTH];
                         remainderWord(inputmain, "CART");
                         printf("%s\n", inputmain);
                         if (IsSameFirstWord(inputmain, "ADD")){
                             remainderWord(inputmain, "ADD");
+                            printf("%s\n", inputmain);
                             if (strlent(inputmain)> 0) {
-                                copyFirstWord(inputmain, namaBarang);
-                                int quantity = stringToINt(inputmain);
+                                int quantity = splitStringInt(inputmain, namaBarang);
+                                printf("%s\n", inputmain);
+                                printf("%s\n", namaBarang);
                                 if (quantity != -1){
                                     CartAdd(&map, listbarang, namaBarang, quantity);
                                 }
@@ -218,7 +222,34 @@ int main(){
                         }
 
                     }
-                    
+                    else if (IsSameFirstWord(inputmain, "WISHLIST")) {
+                        remainderWordalter(inputmain, "WISHLIST");
+                        if (IsSameFirstWord(inputmain, "ADD")) {
+                            wishlistAdd(listbarang, &wishlist);
+                        }
+
+                        else if (IsSameFirstWord(inputmain, "SWAP")) {
+                            //wishlistSwap(&wishlist, inputmain);
+                            // pending dulu masih bingung implementasinya -sakil
+                        }
+
+                        else if (IsSameFirstWord(inputmain, "REMOVE")) {
+                            if (isThereBlank(inputmain)) {
+                                wishlistRemoveIdx(&wishlist, inputmain);
+                            }
+                            else{
+                                wishlistRemoveName(&wishlist);
+                            }
+                        }
+
+                        else if (IsSameFirstWord(inputmain,"CLEAR")) {
+                            wishlistClear(&wishlist);
+                        }
+
+                        else if (IsSameFirstWord(inputmain, "SHOW")) {
+                            wishlistShow(wishlist);
+                        }
+                    }
                 }
 
                     }else{
