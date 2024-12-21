@@ -30,11 +30,12 @@ void CartRemove(Map *M, ListBarang list, char *name, int quantity){
                 M->Elements[i] = M->Elements[i+1];
                 i++;
             }
-            printf("Berhasil mengurangi %d %s dari keranjang belanja!", quantity, M->Elements[idx].Barang.name);
+            printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", quantity, M->Elements[idx].Barang.name);
         }
         else{
-            printf("Berhasil mengurangi %d %s dari keranjang belanja!", quantity, M->Elements[idx].Barang.name);
+            printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", quantity, M->Elements[idx].Barang.name);
             M->Elements[GetAddress(*M, barang)].Kuantitas -= quantity;
+            M->Elements[GetAddress(*M, barang)].total -= barang.price * quantity;
         }
     }
     else{
@@ -43,14 +44,19 @@ void CartRemove(Map *M, ListBarang list, char *name, int quantity){
 }
 
 void DisplayCart(Map M){
-    printf("Berikut adalah isi keranjangmu!\n");
-    printf("Kuantitas  ");
-    printf("Nama           ");
-    printf("Total  ");
-    int i = 0;
-    while(i < M.Count){
-        printf("%10d %14s %7d", M.Elements[i].Kuantitas, M.Elements[i].Barang.name, M.Elements[i].total);
-        i++;
+    if(IsEmpty(M)){
+        printf("Tidak ada Barang apapun di Keranjang.\n");
+    }
+    else{
+        printf("Berikut adalah isi keranjangmu!\n");
+        printf("Kuantitas  ");
+        printf("Nama           ");
+        printf("Total  \n");
+        int i = 0;
+        while(i < M.Count){
+            printf("%-10d %-14s %d\n", M.Elements[i].Kuantitas, M.Elements[i].Barang.name, M.Elements[i].total);
+            i++;
+        }
     }
 }
 

@@ -13,7 +13,7 @@ boolean IsEmpty(Map M){
 }
 
 boolean IsFull(Map M){
-    return M.Count == MaxEl;
+    return M.Count == MaxElCart;
 }
 
 int Value(Map M, Barang barang){
@@ -65,6 +65,7 @@ void Insert(Map *M, Barang barang, int kuantitas){
     else{
         int idx = GetAddress(*M, barang);
         M->Elements[idx].Kuantitas += kuantitas;
+        M->Elements[idx].total = barang.price * M->Elements[idx].Kuantitas;
     }
 }
 

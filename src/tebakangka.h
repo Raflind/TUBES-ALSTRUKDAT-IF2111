@@ -9,7 +9,7 @@
 
 #define MAX_ELMT_ANGKA 10
 
-void ChallengeTebakAngka(User *user);
+void ChallengeTebakAngka(User *user, ListUser *list);
 
 #endif
 

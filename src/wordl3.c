@@ -68,13 +68,15 @@ void displayPreviousGuesses(Word results[], int attempts) {
   }
 }
 
-void PlayWordl3(User *user) {
+void PlayWordl3(User *user, ListUser *List) {
     if (user->money < 50) {
         printf("Maaf, saldo Anda tidak cukup untuk bermain. Biaya permainan: %d rupiah\n", 50);
         return;
     }
 
+    int idx = FindUser(List, user->name);
     user->money -= 50;
+    List->buffer[idx].money -= 50;
 
     // Pilih kata rahasia secara acak dari daftar kata yang sudah ditentukan
     const char* secretWordOptions[] = {
@@ -129,6 +131,7 @@ void PlayWordl3(User *user) {
             printf("Selamat, Anda menang!\n");
             printf("+%d rupiah telah ditambahkan ke akun Anda.\n", 1000 -(200 *attempts));
             user->money += 1000 - (200*attempts);
+            List->buffer[idx].money += 1000 - (200*attempts);
         }
 
     else{

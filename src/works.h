@@ -37,7 +37,7 @@ Works AddWork(WorksList *W, Works NewWorks);
 
 void DisplayWorks(WorksList W);
 
-void UserWorks(WorksList *W, User *user);
+void UserWorks(WorksList *W, User *user, ListUser *list);
 
 void LoadWorkList(WorksList *W);
 

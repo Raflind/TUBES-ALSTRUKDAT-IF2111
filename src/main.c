@@ -91,7 +91,7 @@ int main(){
                     CopyWordToString(inputmain);
 
                     if (string_compare(inputmain, "WORK") == 0){
-                        UserWorks(&worklist, &user);
+                        UserWorks(&worklist, &user, &userlist);
                     }
 
                     else if (string_compare(inputmain, "WORK CHALLENGE") == 0){
@@ -110,12 +110,12 @@ int main(){
                             CopyWordToString(inputChallenge);
 
                             if (string_compare(inputChallenge, "1") == 0){
-                                ChallengeTebakAngka(&user);
+                                ChallengeTebakAngka(&user, &userlist);
                                 inChallenge = 1;
                             }
 
                             else if (string_compare(inputChallenge, "2") == 0){
-                                PlayWordl3(&user);
+                                PlayWordl3(&user, &userlist);
                                 inChallenge = 1;
                             }
 

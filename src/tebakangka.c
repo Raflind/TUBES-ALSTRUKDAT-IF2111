@@ -13,7 +13,7 @@ void AddAnswer(AnswerTebakAngka *Ans, int x){
 }
 */
 
-void ChallengeTebakAngka(User *user){
+void ChallengeTebakAngka(User *user, ListUser *list){
     int answer = ((clock() % 100) + 1);
     int tes = 69;
 
@@ -22,7 +22,9 @@ void ChallengeTebakAngka(User *user){
         return;
     }
 
+    int idx = FindUser(list, user->name);
     user->money -= 50;
+    list->buffer[idx].money -= 50;
     printf("Selamat datang di tebak angka silahkan masukan angka 1-100\n");
     int useranswer = WordToInt(currentWord);
 
@@ -48,6 +50,7 @@ void ChallengeTebakAngka(User *user){
     if(useranswer == answer || useranswer == tes){
         printf("Selamat and mendapatkan %d rupiah\n", 505 -(50*i));
         user->money += 505 - (50*i);
+        list->buffer[idx].money += 505 - (50*i);
     }
     else{
         printf("Kesempatanmu untuk menjawab telah habis!");

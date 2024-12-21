@@ -116,7 +116,8 @@ void DisplayWorks(WorksList W){
     }
 }
 
-void UserWorks(WorksList *W, User *user){
+void UserWorks(WorksList *W, User *user, ListUser *List){
+    int idxuser = FindUser(List, user->name);
     DisplayWorks(*W);
     printf("Masukkan pekerjaan yang dipilih : ");
     START();
@@ -146,6 +147,7 @@ void UserWorks(WorksList *W, User *user){
         printf("Anda sedang bekerja sebagai %s... harap tunggu\n ", selectedwork.contents);
         delay(W->buffer[idx].delay);
         printf("pekerjaan selesai, +%d rupiah telah ditambahkan ke akun anda\n", W->buffer[idx].salary);
+        List->buffer[idxuser].money += W->buffer[idx].salary;
         user->money += W->buffer[idx].salary;
     }
     else{

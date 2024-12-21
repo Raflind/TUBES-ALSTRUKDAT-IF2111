@@ -20,11 +20,9 @@ void CreateWordl3List(Wordl3List *wordl);
 
 void AddWordlAnswer(Wordl3List *wordl);
 
-void WordlChallenge(Wordl3List *wordl, User *User);
-
 void MakeUppercase(Word *answer);
 
-void PlayWordl3(User *user);
+void PlayWordl3(User *user, ListUser *list);
 
 void CompareGuess(Word answer, Word secretWord, Word *marker);
 
