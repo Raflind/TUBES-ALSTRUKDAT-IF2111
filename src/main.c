@@ -197,7 +197,7 @@ int main() {
                     else if(IsSameFirstWord(inputmain, "WISHLIST")){
                         remainderWordalter(inputmain, "WISHLIST");
                         if(IsSameFirstWord(inputmain, "ADD")){
-                            wishlistAdd(listbarang, &wishlist);
+                            wishlistAdd(listbarang, &user.wishlist);
                             AddWishlistToUser(user.wishlist, &user);
                         }
                         else if(IsSameFirstWord(inputmain, "SWAP")){
