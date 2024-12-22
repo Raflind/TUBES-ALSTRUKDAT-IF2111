@@ -76,5 +76,37 @@ int wordContainsBlank(Word word);
 /* Mengembalikan 1 jika kata mengandung blank ' ' atau '\t', 0 jika tidak */
 
 boolean IsSameWord(Word word1, Word word2);
-/* Mengembalikan true jika word1 sama dengan word2 */
+
+boolean IsSameFirstWord(char *s1, char *s2);
+/* Mengembalikan true jika kata pertama pada s1 sama dengan s2 */
+
+void remainderWord(char *s1, char *s2);
+/* Mengambil kata setelah s1 yang dipisahkan oleh 1 spasi */
+
+void remainderWordalter(char *s1, char *s2);
+/* sama seperti remainderWord tapi lebih universal */
+
+void splitString(char *input, char *str1, char *str2);
+/* Memisahkan string dengan format "str1 <spasi> str2" menjadi "str1" dan "str2"*/
+
+int stringToInt(char *str);
+/* I.S stringIsNum = true */
+/* Mengubah string menjadi integer */
+
+boolean stringIsNum(char *str);
+/* true jika setiap karakter pada string berupa angka */
+
+boolean isValidForSplit(char *input);
+/* Mengecek apakah string dapat di split, lebih tepatnya dalam format "str1 <spasi> str2" */
+
+boolean isThereBlank(char *str);
+/* Mengecek apakah ada blank pada string */
+
+void remainderWord(char *s1, char *s2);
+
+int copyFirstWord(char *s1, char *s2);
+
+int stringToINt(char *s1);
+
+int splitStringInt(char *s1, char *s2);
 #endif

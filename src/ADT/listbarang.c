@@ -56,8 +56,10 @@ void DisplayListBarang(ListBarang list) {
         printf("TOKO KOSONG\n");
     } else {
         printf("List barang yang ada di toko:\n");
+        printf("Barang \t\t\t\t | \t Harga\n");
         for (int i = 0; i < LengthList(list); i++) {
-            printf("- %s\n", GetBarangAt(list, i).name);
+            Barang barang = GetBarangAt(list, i);
+            printf("- %s \t\t\t\t %d \n", barang.name, barang.price);
         }
     }
 }
