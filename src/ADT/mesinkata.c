@@ -227,12 +227,10 @@ boolean isValidForSplit(char *input) {
     boolean foundSpace = false;
     boolean foundSecondWord = false;
     
-    // empty string
     if (input == NULL || input[0] == '\0') {
         return false;
     }
     
-    // first character isn't a space
     if (input[0] == ' ') {
         return false;
     }
@@ -244,35 +242,29 @@ boolean isValidForSplit(char *input) {
         i++;
     }
     
-    // Must have found a space
     if (!foundSpace) {
         return false;
     }
     
-    // Skip any additional spaces
     while (input[i] == ' ') {
         i++;
     }
     
-    // Check if there's text after spaces
     if (input[i] == '\0') {
         return false;
     }
     
-    // Process second word
     while (input[i] != '\0' && input[i] != ' ') {
         foundSecondWord = true;
         i++;
     }
     
-    // Check no content after second word
     while (input[i] != '\0') {
         if (input[i] != ' ') {
-            return false;  // Found third character
+            return false;
         }
         i++;
     }
-    
     return foundSpace && foundSecondWord;
 }
 
