@@ -12,7 +12,7 @@ int NewLoadr(ListUser *listuser, ListBarang *listbarang){
  StartWord();
  CopyWordToString(filename);
  printf("\n");
- snprintf(filepath, sizeof(filepath), "../saves/%s.txt", filename);
+ snprintf(filepath, sizeof(filepath), "saves/%s.txt", filename);
  StartFile(filepath);
  if (IsEOP()){
   printf("Savefile gagal dibuka. Silahkan masukkan nama file yang benar.\n");

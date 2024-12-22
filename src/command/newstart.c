@@ -7,7 +7,7 @@
 
 int NewStartr(ListUser *listuser, ListBarang *listbarang){
  char filepath[200];
- snprintf(filepath, sizeof(filepath), "../saves/file_konfig.txt");
+ snprintf(filepath, sizeof(filepath), "saves/file_konfig.txt");
  StartFile(filepath);
  if (IsEOP()){
   printf("PURRMART gagal di-start. You're cooked.\n");
