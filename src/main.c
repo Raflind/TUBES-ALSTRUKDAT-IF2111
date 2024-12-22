@@ -187,10 +187,8 @@ int main(){
                     else if (IsSameFirstWord(inputmain, "CART")){
                         char namaBarang[MAX_WORD_LENGTH];
                         remainderWord(inputmain, "CART");
-                        printf("%s\n", inputmain);
                         if (IsSameFirstWord(inputmain, "ADD")){
                             remainderWord(inputmain, "ADD");
-                            printf("%s\n", inputmain);
                             if (strlent(inputmain)> 0) {
                                 int quantity = splitStringInt(inputmain, namaBarang);
                                 if (quantity != -1){
