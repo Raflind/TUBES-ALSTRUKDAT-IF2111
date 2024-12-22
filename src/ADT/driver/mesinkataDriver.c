@@ -1,71 +1,107 @@
 #include <stdio.h>
-#include "../mesinkata.h"
+#include "mesinkata.h"
 
-int main() {
-    // Tes input
+int main(){
     StartWord();
-    printf("Input: ");
-    printf("%s", currentWord.contents);
-    AdvanceWord;
+    printf("Input: %s\n", currentWord.contents);
 
-    // Tes copyWordToString
+    AdvanceWord();
+    printf("Next Word: %s\n", currentWord.contents);
+
     char str[MAX_WORD_LENGTH];
-    for (int i = 0; i < currentWord.length; i++) {
-        str[i] = currentWord.contents[i];
-    }
-    str[currentWord.length] = '\0';
+    CopyWordToString(str);
     printf("CopyWordToString: %s\n", str);
 
-    // Tes IsWordEqual
-    if (IsWordEqual(currentWord, "LMAO")) {
+    if(IsWordEqual(currentWord, "LMAO")){
         printf("%s sama dengan LMAO\n", currentWord.contents);
-    } else {
+    }
+    else{
         printf("%s tidak sama dengan LMAO\n", currentWord.contents);
     }
 
-    // Tes IsWordNumber
-    if (IsWordNumber(currentWord)) {
+    if(IsWordNumber(currentWord)){
         printf("'%s' adalah angka\n", currentWord.contents);
-    } else {
+    }
+    else{
         printf("'%s' bukan angka\n", currentWord.contents);
     }
 
-    // Tes WordToInt
-    if (IsWordNumber(currentWord)) {
+    if(IsWordNumber(currentWord)){
         int number = WordToInt(currentWord);
         printf("%s adalah integer: %d\n", currentWord.contents, number);
-    } else {
+    }
+    else{
         printf("%s bukan integer\n", currentWord.contents);
     }
 
-    // Tes wordContainsBlank
-    if (wordContainsBlank(currentWord)) {
+    if(wordContainsBlank(currentWord)){
         printf("%s mengandung Blank\n", currentWord.contents);
-    } else {
+    }
+    else{
         printf("%s tidak mengandung Blank\n", currentWord.contents);
     }
 
-    // Tes IsSameWord
     Word kata = {"BEBEK", 5};
-    if (IsSameWord(currentWord, kata)) {
+    if(IsSameWord(currentWord, kata)){
         printf("%s sama dengan BEBEK\n", currentWord.contents);
-    } else {
+    }
+    else{
         printf("%s tidak sama dengan BEBEK\n", currentWord.contents);
     }
 
-    // Tes string_copy
     char destination[MAX_WORD_LENGTH];
     string_copy(destination, currentWord.contents);
     printf("String yang disalin: %s\n", destination);
 
-    // Tes strlent
     int len = strlent(currentWord.contents);
     printf("Panjang string %s: %d\n", currentWord.contents, len);
 
-    // Tes string_compare
     char compareString[] = "bebek";
     int compared = string_compare(currentWord.contents, compareString);
     printf("Perbandingan dengan %s: %d\n", compareString, compared);
+
+    char str1[MAX_WORD_LENGTH], str2[MAX_WORD_LENGTH];
+    splitString(currentWord.contents, str1, str2);
+    printf("Split: str1 = %s, str2 = %s\n", str1, str2);
+
+    if(IsSameFirstWord(currentWord.contents, "BE")){
+        printf("%s memiliki kata pertama yang sama dengan BE\n", currentWord.contents);
+    }
+    else{
+        printf("%s tidak memiliki kata pertama yang sama dengan BE\n", currentWord.contents);
+    }
+
+    char testString1[MAX_WORD_LENGTH] = "BEBEK makan nasi";
+    remainderWordalter(testString1, "BEBEK");
+    printf("Sisa kata setelah alter: %s\n", testString1);
+
+    if(isValidForSplit(currentWord.contents)){
+        printf("%s valid untuk dipisah\n", currentWord.contents);
+    } 
+    else{
+        printf("%s tidak valid untuk dipisah\n", currentWord.contents);
+    }
+
+    if(isThereBlank(currentWord.contents)){
+        printf("%s mengandung spasi/tab\n", currentWord.contents);
+    }
+    else{
+        printf("%s tidak mengandung spasi/tab\n", currentWord.contents);
+    }
+
+    char testString2[MAX_WORD_LENGTH] = "BEBEK makan nasi";
+    remainderWord(testString2, "BEBEK");
+    printf("Sisa kata: %s\n", testString2);
+
+    char firstWord[MAX_WORD_LENGTH];
+    char remaining[MAX_WORD_LENGTH];
+    copyFirstWord("BEBEK makan nasi", firstWord);
+    printf("Kata pertama: %s\n", firstWord);
+
+    char testString3[MAX_WORD_LENGTH] = "BEBEK 123";
+    char splitStr[MAX_WORD_LENGTH];
+    int splitInt = splitStringInt(testString3, splitStr);
+    printf("Split string: %s, Split integer: %d\n", splitStr, splitInt);
 
     return 0;
 }
