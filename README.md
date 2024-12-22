@@ -15,7 +15,7 @@ Tugas Alstrukdat ini merupakan sistem yang dijalankan melalui CLI. Program disin
 # PANDUAN OPERASI
 
 Compile:
-gcc main.c help.c listbarang.c load.c login.c logout.c mesinkarakter.c mesinkata.c queue.c quit.c register.c save.c start.c store.c tebakangka.c user.c wordl3.c works.c -o main
+gcc main.c cart.c help.c linkedlist.c listbarang.c load.c login.c logout.c map.c mesinkarakter.c mesinkata.c newload.c newstart.c profile.c queue.c quit.c register.c save.c stackhistory.c store.c tebakangka.c user.c wishlist.c wordl3.c works.c optimasirute.c -o main
 
 Execution:
 ./main
