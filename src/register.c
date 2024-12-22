@@ -93,6 +93,7 @@ void RegisterUser(ListUser *list) {
 
     newUser.money = 1000;
     CreateEmptyStack(&newUser.riwayat_pembelian);
+    CreateList(&newUser.wishlist);
     list->buffer[list->nEff++] = newUser;
     printf("\nAkun dengan username %s telah berhasil dibuat. Silakan LOGIN untuk melanjutkan.\n", username);
 }
