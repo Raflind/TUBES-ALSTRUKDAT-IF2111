@@ -22,6 +22,7 @@
 #include "profile.h"
 #include "map.h"
 #include "stackhistory.h"
+#include "optimasirute.h"
 
 
 int main(){
@@ -179,6 +180,9 @@ int main(){
                     }   
                     else if (string_compare(inputmain, "PROFILE") == 0){
                         Profile(&user);
+                    }
+                    else if (string_compare(inputmain, "OPTIMASIRUTE") == 0){
+                        optimasirute();
                     }
                     else if (IsSameFirstWord(inputmain, "CART")){
                         char namaBarang[MAX_WORD_LENGTH];

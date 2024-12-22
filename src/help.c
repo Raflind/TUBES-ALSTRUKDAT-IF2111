@@ -18,6 +18,7 @@ void help_main(){
     printf("=====[ Menu Help PURRMART ]=====\n");
     printf("WORK -> Untuk bekerja\n");
     printf("WORK CHALLENGE -> Untuk mengerjakan challenge\n");
+    printf("OPTIMASIRUTE -> Untuk mencari rute optimal\n");
     printf("STORE LIST -> Untuk melihat barang-barang di toko\n");
     printf("STORE REQUEST -> Untuk meminta penambahan barang\n");
     printf("STORE SUPPLY -> Untuk menambahkan barang dari permintaan\n");
