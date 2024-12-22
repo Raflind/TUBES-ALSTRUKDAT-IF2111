@@ -26,7 +26,7 @@ void save(ListUser *listuser, ListBarang *listbarang, char *filename) {
     for (i = 0; i < listuser->nEff; i++) {
         fprintf(pita, "%d %s %s\n", listuser->buffer[i].money, listuser->buffer[i].name, listuser->buffer[i].password);
         Stack userHistoryStack = listuser->buffer[i].riwayat_pembelian;
-        writeHistory(pita, &userHistoryStack);
+        // writeHistory(pita, &userHistoryStack);
     }
 
     fprintf(pita, " ");  // Penutup file, jika diperlukan
