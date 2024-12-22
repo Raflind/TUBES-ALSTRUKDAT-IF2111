@@ -8,7 +8,7 @@
 #include "mesinkarakter.h"
 #include "boolean.h"
 #include "help.h"
-#include "load.h"
+#include "newload.h"
 #include "login.h"
 #include "logout.h"
 #include "quit.h"
@@ -58,7 +58,7 @@ int main(){
             }
         }
         else if (string_compare(input, "LOAD") == 0){
-            if (LoadFile(&userlist, &listbarang) == 2){
+            if (NewLoadr(&userlist, &listbarang) == 2){
                 started = 0;
             }
         }
