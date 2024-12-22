@@ -47,7 +47,7 @@ int GetAddress(Map M, Barang barang){
         int i = 0;
         while(i < M.Count){
             if(string_compare(M.Elements[i].Barang.name, barang.name) == 0){
-                return M.Count - 1;
+                return i;
             }
             i++;
         }
