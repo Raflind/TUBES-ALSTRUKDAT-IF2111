@@ -85,7 +85,6 @@ int main(){
             if (LoginUser(&userlist, &user) == 1){
                 int menu = 1;
                 help_main();
-                CreateEmptyStack(&user.riwayat_pembelian);
                 CreateEmpty(&user.keranjang);
                 while (menu){
                     printf("Silahkan masukkan command: ");

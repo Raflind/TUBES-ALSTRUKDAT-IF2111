@@ -92,6 +92,7 @@ void RegisterUser(ListUser *list) {
     newUser.password[rand+1] = '\0';
 
     newUser.money = 1000;
+    CreateEmptyStack(&newUser.riwayat_pembelian);
     list->buffer[list->nEff++] = newUser;
     printf("\nAkun dengan username %s telah berhasil dibuat. Silakan LOGIN untuk melanjutkan.\n", username);
 }
