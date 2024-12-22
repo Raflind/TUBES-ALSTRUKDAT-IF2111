@@ -14,13 +14,14 @@ Tugas Alstrukdat ini merupakan sistem yang dijalankan melalui CLI. Program disin
 
 # PANDUAN OPERASI
 
-Compile:
-gcc main.c cart.c help.c linkedlist.c listbarang.c load.c login.c logout.c map.c mesinkarakter.c mesinkata.c newload.c newstart.c profile.c queue.c quit.c register.c save.c stackhistory.c store.c tebakangka.c user.c wishlist.c wordl3.c works.c optimasirute.c -o main
+Pengguna dapat langsung mengeksekusi main di terminal setelah memastikan current directory ada pada folder ini atau
 
-Execution:
-./main
+    Pada terminal, pastikan current directory ada pada folder ini
+    Untuk Windows: jalankan file run.bat
+    Untuk Linux: eksekusi file run.sh dengan command ./run.sh
 
-1. Compile dengan perintah gcc yang sesuai, kemudian execute .exe hasil kompilasi
+
+1. Jalankan program sesuai dengan OS yang digunakan
 2. Pada awal, hanya terdapat 3 command legal, yaitu START/LOAD/QUIT. START akan memakai file default untuk konfigurasi data item dan user, sementara LOAD akan memakai file .txt berdasarkan input yang diberikan setelah command LOAD diberikan.
 3. Kemudian, terdapat user verification. Terdapat tiga command legal, yaitu REGISTER/LOGIN/QUIT. REGISTER untuk membuat akun user baru, LOGIN untuk masuk ke akun user yang sudah exist. Keduanya memerlukan username dan password.
 4. Setelah melewati user verification, terdapat opsi command antara: WORK/WORK CHALLENGE/STORE LIST/STORE SUPPLY/STORE REQUEST/STORE REMOVE/LOGOUT/SAVE/QUIT.
