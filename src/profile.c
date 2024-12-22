@@ -17,7 +17,7 @@ void Profile(User *user) {
         DisplayCart(user->keranjang);
     }
 
-    printf("\nRiwayat pembelian:\n");
+    printf("\nMenunjukkan 5 Riwayat pembelian terakhir\n");
     if (IsStackEmpty(user->riwayat_pembelian)) {
         printf("Riwayat pembelian kosong.\n");
     } else {

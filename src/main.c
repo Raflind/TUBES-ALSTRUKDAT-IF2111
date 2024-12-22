@@ -207,26 +207,26 @@ int main() {
                         remainderWordalter(inputmain, "WISHLIST");
                         if(IsSameFirstWord(inputmain, "ADD")){
                             wishlistAdd(listbarang, &wishlist);
-                            AddWishlistToUser(wishlist, &user);
+                            AddWishlistToUser(user.wishlist, &user);
                         }
                         else if(IsSameFirstWord(inputmain, "SWAP")){
-                            wishlistSwap(&wishlist, inputmain);
-                            AddWishlistToUser(wishlist, &user);
+                            wishlistSwap(&user.wishlist, inputmain);
+                            AddWishlistToUser(user.wishlist, &user);
                         }
                         else if(IsSameFirstWord(inputmain, "REMOVE")){
                             if(isThereBlank(inputmain)){
-                                wishlistRemoveIdx(&wishlist, inputmain);
+                                wishlistRemoveIdx(&user.wishlist, inputmain);
                             } else {
-                                wishlistRemoveName(&wishlist);
+                                wishlistRemoveName(&user.wishlist);
                             }
-                            AddWishlistToUser(wishlist, &user);
+                            AddWishlistToUser(user.wishlist, &user);
                         }
                         else if(IsSameFirstWord(inputmain, "CLEAR")){
-                            wishlistClear(&wishlist);
+                            wishlistClear(&user.wishlist);
                             AddWishlistToUser(wishlist, &user);
                         }
                         else if(IsSameFirstWord(inputmain, "SHOW")){
-                            wishlistShow(wishlist);
+                            wishlistShow(user.wishlist);
                         }
                     }
                     else {
