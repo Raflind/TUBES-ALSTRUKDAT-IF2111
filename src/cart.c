@@ -24,8 +24,9 @@ void CartRemove(Map *M, ListBarang list, char *name, int quantity){
             printf("Tidak berhasil mengurangi, hanya terdapat %d %s pada keranjang!\n", M->Elements[idx].Kuantitas, M->Elements[idx].Barang.name);
         }
         else if(Quantity(*M, barang) == quantity){
-            Delete(M, barang);
             printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", quantity, M->Elements[idx].Barang.name);
+            Delete(M, barang);
+            
         }
         else{
             printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", quantity, M->Elements[idx].Barang.name);
