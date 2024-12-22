@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "newstart.h": "c"
+        "newstart.h": "c",
+        "save.h": "c"
     }
 }

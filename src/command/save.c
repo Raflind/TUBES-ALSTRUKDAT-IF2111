@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "save.h"
-#include "stackhistory.h"
+#include "../ADT/stackhistory.h"
 
 void save(ListUser *listuser, ListBarang *listbarang, char *filename) {
-    char filepath[100] = "../saves/";
+    char filepath[100] = "saves/";
     int i = 0;
 
     while (filename[i] != '\0') {
