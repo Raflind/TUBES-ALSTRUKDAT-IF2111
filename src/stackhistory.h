@@ -35,5 +35,6 @@ void Push(Stack *S, infotype X);
 void Pop(Stack *S, infotype *X);
 void PrintStackHistory(Stack S, int N);
 void AddtoPembelian(Map *M, Stack *stackhistory);
+void writeHistory(FILE *pita, Stack *S);
 
 #endif

@@ -66,3 +66,39 @@ void AddtoPembelian(Map *M, Stack *stackhistory) {
     }
     Push(stackhistory, purchase);
 }
+
+// Fungsi untuk menghitung panjang stack
+int StackLength(Stack *S) {
+    int length = 0;
+    address current = S->TOP;
+    while (current != NULL)
+    {
+        length++;
+        current = current->next;
+    }
+    return length;
+}
+
+// buat nulis history
+void writeHistory(FILE *pita, Stack *S) {
+    // Hitung jumlah history barang
+    int length = StackLength(S);
+
+    // tulis banyaknya barang yang dibeli
+    fprintf(pita, "%d\n", length);
+
+    // Traversal stacknya untuk menulis history
+    address current = S->TOP;
+    int count = 0;
+    while (current != NULL)
+    {
+        Pembelian p = current->info;
+        fprintf(pita, "%d %d\n", p.jumlah_barang, p.total);
+        for (int j = 0; j < p.jumlah_barang; j++)
+        {
+            Cart cartItem = p.cart[j];
+            fprintf(pita, "%d %d %s\n", cartItem.total, cartItem.Kuantitas, cartItem.Barang.name);
+            current = current->next;
+        }
+    }
+}

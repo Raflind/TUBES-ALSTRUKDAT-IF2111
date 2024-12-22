@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include "boolean.h"
 
-#define MARK '.'
+#define MARK '~'
+/*Hi ini marknya diganti buat handle save ya tq*/
 
 /* State Mesin */
 extern FILE *pita;
