@@ -1,28 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "store.h"
-#include "listbarang.h"
-#include "queue.h"
-#include "barang.h"
-#include "mesinkata.h"
-#include "mesinkarakter.h"
-#include "boolean.h"
-#include "help.h"
-#include "newload.h"
-#include "login.h"
-#include "logout.h"
-#include "quit.h"
-#include "register.h"
-#include "save.h"
-#include "newstart.h"
-#include "user.h"
-#include "wordl3.h"
-#include "works.h"
-#include "tebakangka.h"
-#include "profile.h"
-#include "map.h"
-#include "stackhistory.h"
-#include "optimasirute.h"
+#include "command/store.h"
+#include "command/help.h"
+#include "command/newload.h"
+#include "command/login.h"
+#include "command/logout.h"
+#include "command/quit.h"
+#include "command/register.h"
+#include "command/save.h"
+#include "command/newstart.h"
+#include "command/wordl3.h"
+#include "command/works.h"
+#include "command/tebakangka.h"
+#include "command/profile.h"
+#include "command/optimasirute.h"
 
 int main() {
     ListBarang listbarang;
@@ -208,7 +199,7 @@ int main() {
                     else if(IsSameFirstWord(inputmain, "WISHLIST")){
                         remainderWordalter(inputmain, "WISHLIST");
                         if(IsSameFirstWord(inputmain, "ADD")){
-                            wishlistAdd(listbarang, &wishlist);
+                            wishlistAdd(listbarang, &user.wishlist);
                             AddWishlistToUser(user.wishlist, &user);
                         }
                         else if(IsSameFirstWord(inputmain, "SWAP")){
