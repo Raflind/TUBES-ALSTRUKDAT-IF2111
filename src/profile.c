@@ -23,14 +23,13 @@ void Profile(User *user) {
     } else {
         PrintStackHistory(user->riwayat_pembelian, 5);
     }
-    /*
+    
     printf("\nWishlist:\n");
     if (isEmptyList(user->wishlist)) {
         printf("Wishlist kosong.\n");
     } else {
         wishlistShow(user->wishlist);
     }
-    */
 
     printf(">\nKembali ke menu utama\n");
 }

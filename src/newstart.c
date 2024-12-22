@@ -138,7 +138,6 @@ int NewStartr(ListUser *listuser, ListBarang *listbarang){
   }
   //printList(rando.wishlist);
   AddUser(listuser, rando);
-  clearList(&rando.wishlist);
   for(int j=0;j<tempu;j++){
    //printf("%c", rando.name[j]);
    rando.name[j] = '\0';
